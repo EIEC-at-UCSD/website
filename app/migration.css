@@ -1,0 +1,20 @@
+/* Keep server-rendered content readable before JavaScript loads. */
+.reveal, .reveal-stagger { opacity: 1; transform: none; }
+.reveal-stagger > * { opacity: 1; transform: none; }
+.hackathon-site .reveal, .hackathon-site .reveal-stagger,
+.hackathon-site .reveal-stagger > * { opacity: 1; transform: none; }
+.hackathon-site { min-height: 100vh; }
+.hackathon-site [id] { scroll-margin-top: 100px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.skip-link { position: fixed; top: -100px; left: 16px; z-index: 10000; padding: 12px 20px; color: #050b15; background: #ffa820; border-radius: 8px; }
+.skip-link:focus { top: 12px; }
+:focus-visible { outline: 2px solid #ffa820; outline-offset: 5px; }
+.board-dialog { position: fixed; inset: 0; margin: auto; padding: 0; border: 0; background: transparent; color: var(--text); width: min(480px, calc(100vw - 32px)); max-height: calc(100dvh - 48px); overflow: auto; }
+.board-dialog::backdrop { background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(8px); }
+.board-dialog .board-modal-card { width: 100%; max-height: none; }
+.project-name, .role-title { font-weight: inherit; }
+.not-found { min-height: 75vh; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+.not-found .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

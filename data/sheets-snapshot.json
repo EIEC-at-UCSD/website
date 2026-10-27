@@ -1,0 +1,616 @@
+{
+  "board": [
+    {
+      "name": "Alex Gilbreath",
+      "role": "Co-President",
+      "experience": "At EIEC I learned so much about the world of entrepreneurship and I can't wait to plan and make more events for our wonderful students here at UCSD.",
+      "photo url": "https://drive.google.com/open?id=11MR6TnJGjaIbZRclt-T5GdzgvRP9UrV3",
+      "fun fact": "I run a clothing business on campus called tritons thrift"
+    },
+    {
+      "name": "Justin James",
+      "role": "Co-President",
+      "experience": "From cohort member to Project Manager and now Co-President, my journey has been incredible, and I am fully committed to growing EIEC into an even more powerful hub for student founders. My mission is to connect you with the resources and network you need to bridge the gap between your next idea and real-world startup success.",
+      "photo url": "https://drive.google.com/open?id=1-cQnkHklj29tHtPOOJ--csgBWpQ1VIXY",
+      "fun fact": "I love hiking, climbing, snowboarding, free diving, and just being outside."
+    },
+    {
+      "name": "Shourya Kulkarni",
+      "role": "VP Marketing",
+      "experience": "Through EIEC, I've gained hands-on entrepreneurship experience, built meaningful connections, and discovered my passion for leading marketing.",
+      "photo url": "https://drive.google.com/open?id=1HkMcSHtw6IFBeG4UwIprAF-YQo0d9o3J",
+      "fun fact": "I get tattoos in every place I travel to!!"
+    },
+    {
+      "name": "Katherine Chui",
+      "role": "VP Finance",
+      "experience": "Hi I’m Katherine, your VP Finance!! I'm going to be overseeing our financial strategies and helping drive sustainable growth across the organization.",
+      "photo url": "https://drive.google.com/open?id=1745klSCYbQ0FNXI8wadHxQVDaCtN1BYR",
+      "fun fact": "Fun Fact: I’m training for a marathon!"
+    },
+    {
+      "name": "Greeshma Doppalapudi",
+      "role": "VP Venture Commitee",
+      "experience": "I am the founder of the club. Right now I am concentrated on flow of venture ideas and pushing them towards an MVP!",
+      "photo url": "https://drive.google.com/open?id=16DQF3TRovgprXYLz_j1oAQyHQXvnJdUQ",
+      "fun fact": "I am a movie geek!"
+    },
+    {
+      "name": "Nicole Fong",
+      "role": "VP Events",
+      "experience": "Love the welcoming and supportive community!",
+      "photo url": "https://drive.google.com/open?id=1q8QUcQILXQf1krOZ7OoBLQDduLA7Kg3f",
+      "fun fact": "I crashed my car the week before orientation </3"
+    },
+    {
+      "name": "Kevin Bae",
+      "role": "Co-VP Operations",
+      "experience": "Currently handling outreach and communications in EIEC. Was involved in the fall cohort Qualcomm Program and worked on an Ecommerce Startup.",
+      "photo url": "https://drive.google.com/open?id=1HJcWKb5VoiNTXk-I1KH7c5MXGJS4L5Pj",
+      "fun fact": "Left-handed"
+    },
+    {
+      "name": "Skylar Granlund",
+      "role": "Co-VP Operations",
+      "experience": "I have really enjoyed my time in EIEC. We are a tight knit group of driven individuals. I'm looking forward to seeing where we go in the future.",
+      "photo url": "https://drive.google.com/open?id=1HMea6rOxj1zvVsJVHiU8fGZs75N_WZNZ",
+      "fun fact": "I can quote more than half of Revenge of the Sith"
+    },
+    {
+      "name": "Logan Crites",
+      "role": "Events Committee Member",
+      "experience": "Hello, I’m Logan. I’m a member of the Events Committee. I’ll be helping to plan EIEC events and I’m really looking forward to meeting a lot of new people at our upcoming events.",
+      "photo url": "https://drive.google.com/open?id=1ccPYDh5hB2Ip6Jb4wYU5aGA5-nJzWl21",
+      "fun fact": "In my free time I enjoy running and photography"
+    },
+    {
+      "name": "Simi Kaur",
+      "role": "Events Committee Member",
+      "experience": "I’m excited to plan engaging and interactive events with the EIEC events committee.",
+      "photo url": "https://drive.google.com/open?id=1Y_-7JMD4_srjQ-q14NFM5QgWEvB2e5n7",
+      "fun fact": "I went skydiving when I turned 18!"
+    },
+    {
+      "name": "Phillip Caviness",
+      "role": "Events Committee Member",
+      "experience": "I just joined as part of the newly formed events committee, excited to get going!",
+      "photo url": "https://drive.google.com/open?id=14TGBdEhagsnWOqdK-g9vFyFqGD7ukFrg",
+      "fun fact": "My first job was being a martial arts instructor"
+    },
+    {
+      "name": "Majell Betron",
+      "role": "Director of Venture Committee",
+      "experience": "I am the Director of the Venture Committee at EIEC, where I work with an amazing team to explore startup ideas, support founders, and bring together students interested in entrepreneurship. I love collaborating with driven people, and I joined EIEC because I have always been fascinated by how a simple idea can grow into something impactful.",
+      "photo url": "https://drive.google.com/open?id=16WTUDn3DnibU-bRLpXiIZeSWALBIg5RW",
+      "fun fact": "Fun fact: I once entered a local golf tournament for fun and unexpectedly won… three times."
+    },
+    {
+      "name": "Samuel Park",
+      "role": "Research Coordinator",
+      "experience": "As the research coordinator of EIEC, I have the role of connecting student project teams with industry mentors and researches to validate technical feasibility.",
+      "photo url": "https://drive.google.com/open?id=11Y1U9n02Wa2TSyTr4VNOOcWyY7utwtzW",
+      "fun fact": "A fun fact about me is that I enjoy fashion. I like to doom scroll on Depop whenever I have free time."
+    },
+    {
+      "name": "Roxanne Wang",
+      "role": "Research Coordinator",
+      "experience": "This is my first quarter with EIEC, and I’m excited to be surrounded by such ambitious and inspiring people. Everyone is deeply committed to innovation and open to thinking beyond the usual approach. I’m looking forward to growing and contributing through this experience.",
+      "photo url": "https://drive.google.com/open?id=1_szP-9eMgn0gs4zmjO2_J3743yU3-UAf",
+      "fun fact": "i have 11 piercings"
+    },
+    {
+      "name": "Ethan Nguyen-Huu",
+      "role": "Research Coordinator",
+      "experience": "I'm going to be helping with outreach to entrepreneurs, professors, and students.",
+      "photo url": "https://drive.google.com/open?id=15KNLXlYm9i5_tqhxhzzh_T2a2koIQEgR",
+      "fun fact": "I like driving even though other people (not me) say I'm bad at it."
+    },
+    {
+      "name": "Roxanne Wang",
+      "role": "Research Coordinator",
+      "experience": "This is my first quarter with EIEC, and I'm excited to be surrounded by such ambitious and inspiring people. Everyone is deeply committed to innovation and open to thinking beyond the usual approach. I'm looking forward to growing and contributing through this experience.",
+      "photo url": "https://drive.google.com/open?id=1HfzPLOfUyYoAPYNMR0YdyDhDGRerzjqV",
+      "fun fact": "i have 11 piercings"
+    },
+    {
+      "name": "Mason Brito",
+      "role": "Social Media Chair",
+      "experience": "Handle social media page as well as generate ads and posters for the club",
+      "photo url": "https://drive.google.com/open?id=1lzPiU9kgptpl5ag1O3gRfQo-nEbx7tj5",
+      "fun fact": "I deadlift 395lbs"
+    },
+    {
+      "name": "Stephanie Kovalchuk-Lum",
+      "role": "Social Media Chair",
+      "experience": "I'm a new board member, but being a part of this club for the past 2 quarters has been a joy!",
+      "photo url": "https://drive.google.com/open?id=1ruUdUyejSu1gC2Utc56ydE5kkGjbvN19",
+      "fun fact": "I love cars."
+    },
+    {
+      "name": "Aniece Wong",
+      "role": "Social Media Editor",
+      "experience": "I've been creating and editing content for EIEC and I'm excited to collaborate with the team to showcase everything EIEC has to offer!",
+      "photo url": "https://drive.google.com/open?id=1DCRE7KhXQHJ0WsFMhFUovjtVSTq1Bhap",
+      "fun fact": "My name starts with an A because my parents wanted me to get an A in everything"
+    },
+    {
+      "name": "Ella Genevieve Blanco",
+      "role": "Social Media Editor",
+      "experience": "I just joined EIEC this quarter! I'm looking forward with working with these people",
+      "photo url": "https://drive.google.com/open?id=1W0BvhopE83x6GtlQ7bSIwJ-l4CdeL4V6",
+      "fun fact": "I named my dog after Keanu Reeves."
+    },
+    {
+      "name": "Ramachandra Darmawan",
+      "role": "Chair of Sponsorship (Finance)",
+      "experience": "Met a lot of cool people and had a fun time being part of EIEC.",
+      "photo url": "https://drive.google.com/open?id=1XkjjB7S81iOkrdT1MV28Ll9vuS_DaKRZ",
+      "fun fact": "I have 6 siblings: 3 cats and 3 dogs"
+    },
+    {
+      "name": "Janele Ting",
+      "role": "Venture Committee Chair",
+      "experience": "I’m responsible for securing and assigning venture projects to introduce to club members, and leading club direction from a venture perspective. I’ve been affiliated with EIEC since winter quarter in the Qualcomm x EIEC entrepreneur cohort before transitioning ovt to",
+      "photo url": "https://drive.google.com/open?id=1C2dkrKrUmRR0uDf38nOsnFYW2IYjIAga",
+      "fun fact": "My favorite food is sour plums!"
+    },
+    {
+      "name": "Nathan Lityo",
+      "role": "Venture Board",
+      "experience": "My experience in EIEC has thought me a lot about how early stage ideas turn to possible bsuiness ventures. It's also helped me get a better sense of the behind the scenes of running a club and made me meet with many like-minded people.",
+      "photo url": "https://drive.google.com/open?id=1Ji8nEJsUJW3Iu4ki8EEzfC-9jgg5M_-Y",
+      "fun fact": "I love building watches!"
+    },
+    {
+      "name": "Alyssa Cherlin",
+      "role": "Chair of Graphic Design",
+      "experience": "I help maintain the website and create graphics for the club.",
+      "photo url": "https://drive.google.com/open?id=117nA9TTjK0S_sQVOs6k0qGwWkzv85XRI",
+      "fun fact": "I've interned abroad in Seoul as a Graphic Designer!"
+    },
+    {
+      "name": "Luke Wang",
+      "role": "Internal Systems Lead",
+      "experience": "I was part of the Fall 2025 QI x EIEC program. Now as a board member, I've built the EIEC website.",
+      "photo url": "https://drive.google.com/open?id=1Nd4qg7SXCR6jhG5fdTBuPuqt23p0MwoG",
+      "fun fact": "I have a dog named Jeff."
+    },
+    {
+      "name": "Jacob Reid",
+      "role": "Operations",
+      "experience": "As part of the Operations team for EIEC, I help bring events like panels, hackathons, and GBMs to life. Through the Qualcomm × EIEC QI program, I’ve explored how innovation connects with real business models to turn ideas into products.",
+      "photo url": "https://drive.google.com/open?id=1zxhMwRxOjmMCO8akI6QZYWGCjDdFrDVV",
+      "fun fact": "I work as a surf instructor for REC."
+    },
+    {
+      "name": "Jeffrey Sim",
+      "role": "Operations",
+      "experience": "At EIEC, I've met some great people and learned a lot about what it takes to build a startup.",
+      "photo url": "https://drive.google.com/open?id=1Ywx1S7DtunwN_8eQKNi4lvlTLDvOld5Q",
+      "fun fact": "I won $500 from my first scratcher of the quarter"
+    }
+  ],
+  "events": [
+    {
+      "date": "5-29-2026",
+      "title": "Pre-Hackathon Social",
+      "description": "Come meet fellow hackathon participants at our Pre-Hackathon Social! Get to know other participants and form teams before our SoPE Hackathon begins.",
+      "location": "DIB 473",
+      "time": "6 PM-8 PM",
+      "audience": "Hackathon Participants",
+      "past": ""
+    }
+  ],
+  "projects": [
+    {
+      "project name": "Claricart",
+      "color": "purple",
+      "tags": "AI, SaaS, B2B",
+      "description": "Most e-commerce chatbots are bad: wrong answers, frustrated customers, more support tickets than they close. Claricart is an AI support tool that actually understands the store: product catalog, order history, return policies, all of it. We distribute via Shopify as a subscription app. Beyond chat, we're building analytics that surface what store owners can't see in Shopify alone: unmet demand, price sensitivity, and gaps between how customers search and how products are described.",
+      "role title": "Data Engineering Intern",
+      "role type": "swe",
+      "role tag label": "SWE",
+      "role description": "Build ML-powered pipelines to extract insights from e-commerce customer conversation logs. Responsibilities include ETL pipeline design, NLP/sentiment analysis on chat transcripts, topic modeling, and creating dashboards for store owners integrated into the ClarityCart app. You'll work with MongoDB, Shopify data, and LLM-based workflows to surface demand signals, product gaps, and customer pain points, overall insights. Preferred: JavaScript, Python, Pandas, OpenAI API, prompt engineering. Familiarity with e-commerce data models and MongoDB is a plus.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://forms.gle/mgLS7GZRZ1faK2zVA"
+    },
+    {
+      "project name": "Claricart",
+      "color": "purple",
+      "tags": "AI, SaaS, B2B",
+      "description": "Most e-commerce chatbots are bad: wrong answers, frustrated customers, more support tickets than they close. Claricart is an AI support tool that actually understands the store: product catalog, order history, return policies, all of it. We distribute via Shopify as a subscription app. Beyond chat, we're building analytics that surface what store owners can't see in Shopify alone: unmet demand, price sensitivity, and gaps between how customers search and how products are described.",
+      "role title": "Software Engineer Intern",
+      "role type": "swe",
+      "role tag label": "SWE",
+      "role description": "You'll work across the full Claricart stack: a Node.js RAG service that embeds product data into LanceDB for AI-powered chat, a Remix/React store owner dashboard, and an embeddable chat widget. You'd touch the embedding pipeline, vector search, order/cart tooling, the Shopify admin UI, and the widget. Active development right now is an analytics dashboard that surfaces conversation-driven insights (demand signals, price sensitivity, product gaps) using MongoDB and Shopify sales data. Full-stack experience required, RAG experience is a plus.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://forms.gle/mgLS7GZRZ1faK2zVA"
+    },
+    {
+      "project name": "Claricart",
+      "color": "purple",
+      "tags": "AI, SaaS, B2B",
+      "description": "Most e-commerce chatbots are bad: wrong answers, frustrated customers, more support tickets than they close. Claricart is an AI support tool that actually understands the store: product catalog, order history, return policies, all of it. We distribute via Shopify as a subscription app. Beyond chat, we're building analytics that surface what store owners can't see in Shopify alone: unmet demand, price sensitivity, and gaps between how customers search and how products are described.",
+      "role title": "Marketing Intern",
+      "role type": "mkt",
+      "role tag label": "Marketing",
+      "role description": "Claricart's target users are independent Shopify store owners who are skeptical of AI hype and don't respond to generic SaaS marketing. You'll own early growth from zero: figure out which channels reach these people, create content that demonstrates value without overselling, and run outreach that doesn't feel like spam. The goal is our first 10 real paying merchants. If you've built something from nothing before, tell us about it.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://forms.gle/mgLS7GZRZ1faK2zVA"
+    },
+    {
+      "project name": "UFC Stream Enforcement",
+      "color": "green",
+      "tags": "Deeptech, Robotics, B2B",
+      "description": "A technology initiative to automate the detection and elimination of unauthorized live sports streaming. Using web-scraping combined with Al, the system identifies and flags illegal streams — replacing what is currently a slow, manual enforcement process — to protect broadcast rights and revenue for rights holders like the UFC.",
+      "role title": "Data Engineer",
+      "role type": "swe",
+      "role tag label": "SWE",
+      "role description": "Data Engineers / ML Track - Building and maintaining the data infrastructure needed to identify, classify, and track infringing content at scale. Experience with streaming data pipelines preferred.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://docs.google.com/forms/d/e/1FAIpQLSfnKso8YnQ6IhC15SFcFk-Wwgvcep7bED-KtN_MF-yIsWhZiQ/viewform"
+    },
+    {
+      "project name": "UFC Stream Enforcement",
+      "color": "green",
+      "tags": "Deeptech, Robotics, B2B",
+      "description": "A technology initiative to automate the detection and elimination of unauthorized live sports streaming. Using web-scraping combined with Al, the system identifies and flags illegal streams — replacing what is currently a slow, manual enforcement process — to protect broadcast rights and revenue for rights holders like the UFC.",
+      "role title": "Backend Software Engineer",
+      "role type": "swe",
+      "role tag label": "SWE",
+      "role description": "Backend Engineers - Core infrastructure for detection pipelines, API integrations, and enforcement workflows. Python, Go, or similar. Comfort with distributed systems is a plus.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://docs.google.com/forms/d/e/1FAIpQLSfnKso8YnQ6IhC15SFcFk-Wwgvcep7bED-KtN_MF-yIsWhZiQ/viewformm"
+    },
+    {
+      "project name": "UFC Stream Enforcement",
+      "color": "green",
+      "tags": "Deeptech, Robotics, B2B",
+      "description": "A technology initiative to automate the detection and elimination of unauthorized live sports streaming. Using web-scraping combined with Al, the system identifies and flags illegal streams — replacing what is currently a slow, manual enforcement process — to protect broadcast rights and revenue for rights holders like the UFC.",
+      "role title": "Network Engineer",
+      "role type": "swe",
+      "role tag label": "SWE",
+      "role description": "Network & Protocol Analysts - Students who understand how unauthorized streams are distributed — RTMP, HLS, peer-to-peer propagation - and can help design detection logic at the protocol level.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://docs.google.com/forms/d/e/1FAIpQLSfnKso8YnQ6IhC15SFcFk-Wwgvcep7bED-KtN_MF-yIsWhZiQ/viewform"
+    },
+    {
+      "project name": "UFC Stream Enforcement",
+      "color": "green",
+      "tags": "Deeptech, Robotics, B2B",
+      "description": "A technology initiative to automate the detection and elimination of unauthorized live sports streaming. Using web-scraping combined with Al, the system identifies and flags illegal streams — replacing what is currently a slow, manual enforcement process — to protect broadcast rights and revenue for rights holders like the UFC.",
+      "role title": "Legal & IP Researcher",
+      "role type": "biz",
+      "role tag label": "Strategy",
+      "role description": "Legal & IP Research - One or two students with interest in intellectual property law, digital media rights, or regulatory frameworks. This role supports the enforcement strategy and helps frame jurisdiction and liability questions correctly.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://docs.google.com/forms/d/e/1FAIpQLSfnKso8YnQ6IhC15SFcFk-Wwgvcep7bED-KtN_MF-yIsWhZiQ/viewform"
+    },
+    {
+      "project name": "UFC Stream Enforcement",
+      "color": "green",
+      "tags": "Deeptech, Robotics, B2B",
+      "description": "A technology initiative to automate the detection and elimination of unauthorized live sports streaming. Using web-scraping combined with Al, the system identifies and flags illegal streams — replacing what is currently a slow, manual enforcement process — to protect broadcast rights and revenue for rights holders like the UFC.",
+      "role title": "Product / Project Coordinator",
+      "role type": "biz",
+      "role tag label": "Strategy",
+      "role description": "Product / Project Coordinator - Someone who can hold the team together, manage sprint cycles, and keep communication clean between technical contributors and stakeholders.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://docs.google.com/forms/d/e/1FAIpQLSfnKso8YnQ6IhC15SFcFk-Wwgvcep7bED-KtN_MF-yIsWhZiQ/viewform"
+    },
+    {
+      "project name": "Autonomous Robots",
+      "color": "pink",
+      "tags": "Robotics, Hardware, Cloud",
+      "description": "We're building autonomous robots that detect leaks in fluid and gas piping systems, combining physical hardware with cloud-connected sensing software. Current leak detection methods are outdated, slow, and dangerous. We're replacing soapy water that bubbles with a smarter system that works in real time. Both the hardware and software sides are being built from scratch.",
+      "role title": "Business Strategy Intern",
+      "role type": "biz",
+      "role tag label": "Strategy",
+      "role description": "The hardest problem right now isn't technical. It's figuring out which customer to go after first. Data centers? Water utilities? Industrial pipelines? Each has different buyers, different purchasing cycles, and different regulatory environments. You'll research the landscape, talk to people in these industries, and help the team make a defensible market entry decision. Expect to build frameworks, throw some of them out, and land on something real through iteration.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://forms.gle/mgLS7GZRZ1faK2zVA"
+    },
+    {
+      "project name": "Autonomous Robots",
+      "color": "pink",
+      "tags": "Robotics, Hardware, Cloud",
+      "description": "We're building autonomous robots that detect leaks in fluid and gas piping systems, combining physical hardware with cloud-connected sensing software. Current leak detection methods are outdated, slow, and dangerous. We're replacing soapy water that bubbles with a smarter system that works in real time. Both the hardware and software sides are being built from scratch.",
+      "role title": "Software Engineer Intern",
+      "role type": "swe",
+      "role tag label": "SWE",
+      "role description": "You'll build the cloud-connected software that ties the robot's onboard sensors to a real-time monitoring dashboard. This includes sensor data pipelines, anomaly detection logic, and an interface that lets operators see what's happening inside a pipe without being near it. Python and comfort with embedded systems or IoT is ideal. If you've built anything that collects, processes, and visualizes live sensor data, we want to talk to you.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://forms.gle/mgLS7GZRZ1faK2zVA"
+    },
+    {
+      "project name": "Autonomous Robots",
+      "color": "pink",
+      "tags": "Robotics, Hardware, Cloud",
+      "description": "We're building autonomous robots that detect leaks in fluid and gas piping systems, combining physical hardware with cloud-connected sensing software. Current leak detection methods are outdated, slow, and dangerous. We're replacing soapy water that bubbles with a smarter system that works in real time. Both the hardware and software sides are being built from scratch.",
+      "role title": "Hardware Engineer Intern",
+      "role type": "hw",
+      "role tag label": "Hardware",
+      "role description": "You'll work on the robot itself: chassis design, locomotion mechanisms, suction-based adhesion for anchoring to pipe walls, and integration of pressure and gas sensors. We're prototyping with access to UCSD fabrication resources. CAD required (SolidWorks or Fusion 360). We want someone who can go from sketch to physical prototype and isn't precious about iterating when something doesn't work, because it will break, and that's the job.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://forms.gle/mgLS7GZRZ1faK2zVA"
+    },
+    {
+      "project name": "Respira Bio",
+      "color": "blue",
+      "tags": "Biotech, MedDevice, B2B",
+      "description": "Lung cancer is one of the most survivable cancers if caught early. Most cases aren't. We're building a breathalyzer that detects lung cancer biomarkers non-invasively, fast, and affordably, making early screening accessible in clinics that currently can't justify CT programs. Revenue model: devices sold or leased to hospitals, recurring income from single-use sensor cartridges.",
+      "role title": "Business Strategy Intern",
+      "role type": "biz",
+      "role tag label": "Strategy",
+      "role description": "Medical devices live or die by their commercial strategy long before FDA approval. You'll map the regulatory pathway we need to navigate, figure out which customer buys first (hospitals, independent clinics, insurance-driven programs, or home health), and build the financial case for each. You'll also run stakeholder interviews with clinicians and hospital administrators to pressure-test our assumptions. No biotech background required. Intellectual curiosity and comfort with ambiguity are non-negotiable.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://forms.gle/mgLS7GZRZ1faK2zVA"
+    },
+    {
+      "project name": "Respira Bio",
+      "color": "blue",
+      "tags": "Biotech, MedDevice, B2B",
+      "description": "Lung cancer is one of the most survivable cancers if caught early. Most cases aren't. We're building a breathalyzer that detects lung cancer biomarkers non-invasively, fast, and affordably, making early screening accessible in clinics that currently can't justify CT programs. Revenue model: devices sold or leased to hospitals, recurring income from single-use sensor cartridges.",
+      "role title": "Hardware Engineer Intern",
+      "role type": "hw",
+      "role tag label": "Hardware",
+      "role description": "You'll work on the physical breathalyzer device, integrating biosensors that detect volatile organic compounds in breath, designing the single-use cartridge system, and running benchtop tests to validate sensitivity and specificity. This is real prototype development, not simulation. Biomedical engineering, chemistry, or electrical engineering background is a strong plus. Experience with biosensors, microfluidics, or analytical instrumentation is especially valuable.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://forms.gle/mgLS7GZRZ1faK2zVA"
+    },
+    {
+      "project name": "Respira Bio",
+      "color": "blue",
+      "tags": "Biotech, MedDevice, B2B",
+      "description": "Lung cancer is one of the most survivable cancers if caught early. Most cases aren't. We're building a breathalyzer that detects lung cancer biomarkers non-invasively, fast, and affordably, making early screening accessible in clinics that currently can't justify CT programs. Revenue model: devices sold or leased to hospitals, recurring income from single-use sensor cartridges.",
+      "role title": "Designer Intern",
+      "role type": "design",
+      "role tag label": "Design",
+      "role description": "A medical device that feels trustworthy in a clinical environment is a completely different design challenge from a consumer product. You'll own the industrial design direction for the breathalyzer: what it looks like, how it feels to use, and how it communicates results to both patients and clinicians. You'll also design our brand identity and presentation materials for investor and hospital pitches. Figma required; some sense of physical product design is a plus.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://forms.gle/mgLS7GZRZ1faK2zVA"
+    },
+    {
+      "project name": "AleraAI",
+      "color": "orange",
+      "tags": "AI, Consumer App, B2B2C",
+      "description": "AleraAI is a mobile app that predicts safety risks in real time, guides users toward safer routes, and gives universities and campus security teams actionable data. We're starting with students and commuters and selling the institutional layer to universities and law enforcement. Real predictive intelligence, real B2B revenue model, not just a crime map with a better UI.",
+      "role title": "Business Strategy Intern",
+      "role type": "biz",
+      "role tag label": "Strategy",
+      "role description": "Our go-to-market depends on cracking the university partnership model, which means understanding exactly how campus safety offices make purchasing decisions, who the actual budget holders are, and what a compelling pilot proposal looks like to them. You'll research UCSD's existing safety infrastructure, map the decision-making chain, design a pilot program structure, and build the outreach materials to get us in the room. If this goes well, you'll be the person who landed our first institutional customer.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://forms.gle/mgLS7GZRZ1faK2zVA"
+    },
+    {
+      "project name": "AleraAI",
+      "color": "orange",
+      "tags": "AI, Consumer App, B2B2C",
+      "description": "AleraAI is a mobile app that predicts safety risks in real time, guides users toward safer routes, and gives universities and campus security teams actionable data. We're starting with students and commuters and selling the institutional layer to universities and law enforcement. Real predictive intelligence, real B2B revenue model, not just a crime map with a better UI.",
+      "role title": "Software Engineer Intern",
+      "role type": "swe",
+      "role tag label": "SWE",
+      "role description": "You'll build the core mobile app: real-time location processing, risk scoring logic based on incident and environmental data, and push alert systems. We're targeting React Native or Flutter for cross-platform. You'll also work on the data pipeline feeding the prediction model. Strong comfort with location APIs, real-time data streams, and mobile development required. This is a zero-to-one build. You'll be making architectural decisions that matter, not implementing a spec someone else wrote.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://forms.gle/mgLS7GZRZ1faK2zVA"
+    },
+    {
+      "project name": "AleraAI",
+      "color": "orange",
+      "tags": "AI, Consumer App, B2B2C",
+      "description": "AleraAI is a mobile app that predicts safety risks in real time, guides users toward safer routes, and gives universities and campus security teams actionable data. We're starting with students and commuters and selling the institutional layer to universities and law enforcement. Real predictive intelligence, real B2B revenue model, not just a crime map with a better UI.",
+      "role title": "Marketing Intern",
+      "role type": "mkt",
+      "role tag label": "Marketing",
+      "role description": "Safety is something people care deeply about but don't love being marketed to about. Your challenge is to build genuine community around AleraAI, starting with UCSD students, without it feeling like a fear campaign. You'll run our social channels, design student-facing content, and develop grassroots activation strategies: tabling, partnerships with student orgs, word-of-mouth loops. Strong writing required. Experience with campus organizing or community building is a big plus.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://forms.gle/mgLS7GZRZ1faK2zVA"
+    },
+    {
+      "project name": "Intelligent Career Planning",
+      "color": "green",
+      "tags": "AI, EdTech, B2C / B2B",
+      "description": "Students apply aimlessly and miss opportunities that actually fit them. We're building an AI platform that matches students to the right opportunities, helps them build stronger applications, and gives universities a tool to license for their entire student body. The market is crowded, which means the only path is finding the gap none of them fill and owning it completely.",
+      "role title": "Business Strategy Intern",
+      "role type": "biz",
+      "role tag label": "Strategy",
+      "role description": "You'll answer the most important question facing this project: who is not being served by Handshake, LinkedIn, or any existing tool, and why? That means deep competitive research, user interviews with students and recent grads across different majors and backgrounds, and a clear point of view on our differentiated positioning. You'll also model the university licensing opportunity and structure what a deal with a career center looks like. First-gen students and people from underrepresented backgrounds are especially encouraged to apply. Your experience navigating recruiting is exactly the insight we need.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://forms.gle/mgLS7GZRZ1faK2zVA"
+    },
+    {
+      "project name": "Intelligent Career Planning",
+      "color": "green",
+      "tags": "AI, EdTech, B2C / B2B",
+      "description": "Students apply aimlessly and miss opportunities that actually fit them. We're building an AI platform that matches students to the right opportunities, helps them build stronger applications, and gives universities a tool to license for their entire student body. The market is crowded, which means the only path is finding the gap none of them fill and owning it completely.",
+      "role title": "Software Engineer Intern",
+      "role type": "swe",
+      "role tag label": "SWE",
+      "role description": "You'll build the core platform from scratch: the opportunity matching engine, the AI application builder that helps students tailor their materials, and the user dashboard. Full-stack work: backend data pipelines, LLM API integration for the AI features, and a fast front-end. We want it to feel noticeably better than Handshake from the first click. Full-stack experience required; LLM API experience a major plus.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://forms.gle/mgLS7GZRZ1faK2zVA"
+    },
+    {
+      "project name": "Intelligent Career Planning",
+      "color": "green",
+      "tags": "AI, EdTech, B2C / B2B",
+      "description": "Students apply aimlessly and miss opportunities that actually fit them. We're building an AI platform that matches students to the right opportunities, helps them build stronger applications, and gives universities a tool to license for their entire student body. The market is crowded, which means the only path is finding the gap none of them fill and owning it completely.",
+      "role title": "Designer Intern",
+      "role type": "design",
+      "role tag label": "Design",
+      "role description": "The bar is simple: this needs to feel cleaner, smarter, and more human than Handshake. You'll own the entire product design: user flows, interface design, component system, and brand identity. We want something students actually enjoy using, not something they tolerate because their university requires it. Figma required. Prior product design experience for consumer-facing apps strongly preferred. Show us work that proves you design for real people, not just for portfolios.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://forms.gle/mgLS7GZRZ1faK2zVA"
+    },
+    {
+      "project name": "Intelligent Career Planning",
+      "color": "green",
+      "tags": "AI, EdTech, B2C / B2B",
+      "description": "Students apply aimlessly and miss opportunities that actually fit them. We're building an AI platform that matches students to the right opportunities, helps them build stronger applications, and gives universities a tool to license for their entire student body. The market is crowded, which means the only path is finding the gap none of them fill and owning it completely.",
+      "role title": "Marketing Intern",
+      "role type": "mkt",
+      "role tag label": "Marketing",
+      "role description": "Every junior at UCSD is stressed about recruiting right now. Your job is to make sure they know about this platform before they send their next application blindly into the void. You'll design and run student-to-student growth campaigns, build referral loops, and find the distribution channels that actually move the needle on campus: social, tabling, student org partnerships, and whatever else works. Target: 100 users by end of quarter.",
+      "hours": "5-8 hrs / week",
+      "apply url": "https://forms.gle/mgLS7GZRZ1faK2zVA"
+    }
+  ],
+  "content": [
+    {
+      "key": "hero_eyebrow",
+      "value": "UCSD · Est. 2025"
+    },
+    {
+      "key": "hero_heading_line1",
+      "value": "Where engineers"
+    },
+    {
+      "key": "hero_heading_line2",
+      "value": "become"
+    },
+    {
+      "key": "hero_heading_accent",
+      "value": "founders."
+    },
+    {
+      "key": "hero_description",
+      "value": "The Engineering Innovators and Entrepreneurs Club (EIEC) is a student-run organization at UC San Diego that turns engineering talent into entrepreneurial builders. We work with real ventures and give students the experience of building from zero to one."
+    },
+    {
+      "key": "mission_heading",
+      "value": "Turning engineers into innovators and entrepreneurs."
+    },
+    {
+      "key": "mission_paragraph1",
+      "value": "At EIEC, we empower UC San Diego students to build ventures, solve real-world problems, and create what doesn't yet exist. We're shifting the campus focus from purely job-oriented pursuits toward innovation and entrepreneurship."
+    },
+    {
+      "key": "mission_paragraph2",
+      "value": "We foster an environment where students develop entrepreneurial thinking, tackle real challenges, and merge technical skills with business acumen. Our members don't just gain professional skills. They build the mindset and network to imagine, lead, and create."
+    },
+    {
+      "key": "value1_title",
+      "value": "Build Real Ventures"
+    },
+    {
+      "key": "value1_desc",
+      "value": "Work on actual startups from concept to prototype. Real problems, real users, real stakes."
+    },
+    {
+      "key": "value2_title",
+      "value": "Cross-Disciplinary Teams"
+    },
+    {
+      "key": "value2_desc",
+      "value": "Engineers, designers, and business strategists working together, the way real startups work."
+    },
+    {
+      "key": "value3_title",
+      "value": "Events & Workshops"
+    },
+    {
+      "key": "value3_desc",
+      "value": "We host workshops, speaker events, and general body meetings throughout the quarter to help you grow."
+    },
+    {
+      "key": "value4_title",
+      "value": "Get Connected"
+    },
+    {
+      "key": "value4_desc",
+      "value": "Join a community of builders. Whether you want to collaborate, learn, or just get inspired, we're here."
+    },
+    {
+      "key": "board_section_title",
+      "value": "Meet the Board"
+    },
+    {
+      "key": "board_section_desc",
+      "value": "The people running EIEC. Students who've been in the trenches and are building the org they wish existed when they started."
+    },
+    {
+      "key": "contact_title",
+      "value": "Want to reach out?"
+    },
+    {
+      "key": "contact_desc",
+      "value": "Whether you're interested in joining us, partnering, or just want to learn more, reach out."
+    },
+    {
+      "key": "cta_title",
+      "value": "Ready to build something real?"
+    },
+    {
+      "key": "cta_desc",
+      "value": "We're currently recruiting. Check out our open projects and apply."
+    },
+    {
+      "key": "recruitment_hero_eyebrow",
+      "value": "Open roles · Spring 2026"
+    },
+    {
+      "key": "recruitment_hero_heading_line1",
+      "value": "Build something"
+    },
+    {
+      "key": "recruitment_hero_heading_accent",
+      "value": "real."
+    },
+    {
+      "key": "recruitment_hero_desc",
+      "value": "EIEC's portfolio of early-stage ventures is looking for students to join as volunteer interns. These are zero-to-one projects: scrappy, ambiguous, and genuinely exciting. You won't be shadowing anyone. You'll be doing the work."
+    },
+    {
+      "key": "projects_hero_eyebrow",
+      "value": "Our Projects"
+    },
+    {
+      "key": "projects_hero_heading_line1",
+      "value": "What we've"
+    },
+    {
+      "key": "projects_hero_heading_accent",
+      "value": "built."
+    },
+    {
+      "key": "projects_hero_desc",
+      "value": "Here's a look at some of the work that we have done. EIEC has helped bring together and mentor these teams."
+    },
+    {
+      "key": "projects_section_eyebrow",
+      "value": "Current"
+    },
+    {
+      "key": "projects_section_title",
+      "value": "2025 - 2026"
+    },
+    {
+      "key": "projects_section_desc",
+      "value": "Six venture teams working across robotics, biotech, AI, and consumer products."
+    },
+    {
+      "key": "events_hero_eyebrow",
+      "value": "Events & Workshops"
+    },
+    {
+      "key": "events_hero_heading_line1",
+      "value": "Learn, build,"
+    },
+    {
+      "key": "events_hero_heading_accent",
+      "value": "connect."
+    },
+    {
+      "key": "events_hero_desc",
+      "value": "EIEC hosts workshops, speaker events, demo days, and networking sessions throughout the quarter. Here's what's coming up and what we've done."
+    },
+    {
+      "key": "events_section_title",
+      "value": "Upcoming Events"
+    },
+    {
+      "key": "events_section_desc",
+      "value": "Mark your calendar. All events are open to UCSD students unless otherwise noted."
+    }
+  ]
+}
