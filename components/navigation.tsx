@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-const links = [["/", "Home"], ["/projects", "Projects"], ["/recruitment", "Recruitment"], ["/events", "Events"]];
+const links = [["/", "Home"], ["/projects", "Projects"], ["/events", "Events"]];
 
 export function Navigation({ hackathon = false }: { hackathon?: boolean }) {
   const pathname = usePathname();
@@ -14,7 +14,6 @@ export function Navigation({ hackathon = false }: { hackathon?: boolean }) {
       <img src="/EIEC%20Logo.png" alt="EIEC logo" className={hackathon ? "eiec-logo" : undefined} width={44} height={44} />
       {hackathon ? <><span className="x">×</span><img src="/hackathon/SOPE.png" alt="SoPE logo" className="mark" /></> : <>EIEC <span>✦</span></>}
     </Link>
-    {!hackathon && <Link href="/hackathon" className="nav-announce"><span className="nav-announce-text">2026 · SoPE Hackathon</span><span className="nav-announce-arrow">→</span></Link>}
     <div id={hackathon ? "hackathon-navigation" : "site-navigation"} className={`nav-links${open ? " open" : ""}`}>
       {hackathon ? <>
         {["Why", "Format", "Schedule", "FAQ"].map((label, i) => <a key={label} href={`#${["why", "challenge", "schedule", "faq"][i]}`} onClick={() => setOpen(false)}>{label}</a>)}
