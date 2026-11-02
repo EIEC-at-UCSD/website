@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Claricart",
+    "color": "purple",
+    "tags": [
+      "AI",
+      "SaaS",
+      "B2B"
+    ],
+    "description": "Most e-commerce chatbots are bad: wrong answers, frustrated customers, more support tickets than they close. Claricart is an AI support tool that actually understands the store: product catalog, order history, return policies, all of it. We distribute via Shopify as a subscription app. Beyond chat, we're building analytics that surface what store owners can't see in Shopify alone: unmet demand, price sensitivity, and gaps between how customers search and how products are described."
+  },
+  {
+    "name": "UFC Stream Enforcement",
+    "color": "green",
+    "tags": [
+      "Deeptech",
+      "Robotics",
+      "B2B"
+    ],
+    "description": "A technology initiative to automate the detection and elimination of unauthorized live sports streaming. Using web scraping combined with AI, the system identifies and flags illegal streams, replacing a slow manual enforcement process, to protect broadcast rights and revenue for rights holders like the UFC."
+  },
+  {
+    "name": "Autonomous Robots",
+    "color": "pink",
+    "tags": [
+      "Robotics",
+      "Hardware",
+      "Cloud"
+    ],
+    "description": "We're building autonomous robots that detect leaks in fluid and gas piping systems, combining physical hardware with cloud-connected sensing software. Current leak detection methods are outdated, slow, and dangerous. We're replacing soapy water that bubbles with a smarter system that works in real time. Both the hardware and software sides are being built from scratch."
+  },
+  {
+    "name": "Respira Bio",
+    "color": "blue",
+    "tags": [
+      "Biotech",
+      "MedDevice",
+      "B2B"
+    ],
+    "description": "Lung cancer is one of the most survivable cancers if caught early. Most cases aren't. We're building a breathalyzer that detects lung cancer biomarkers non-invasively, fast, and affordably, making early screening accessible in clinics that currently can't justify CT programs. Revenue model: devices sold or leased to hospitals, recurring income from single-use sensor cartridges."
+  },
+  {
+    "name": "AleraAI",
+    "color": "orange",
+    "tags": [
+      "AI",
+      "Consumer App",
+      "B2B2C"
+    ],
+    "description": "AleraAI is a mobile app that predicts safety risks in real time, guides users toward safer routes, and gives universities and campus security teams actionable data. We're starting with students and commuters and selling the institutional layer to universities and law enforcement. Real predictive intelligence, real B2B revenue model, not just a crime map with a better UI."
+  },
+  {
+    "name": "Intelligent Career Planning",
+    "color": "green",
+    "tags": [
+      "AI",
+      "EdTech",
+      "B2C / B2B"
+    ],
+    "description": "Students apply aimlessly and miss opportunities that actually fit them. We're building an AI platform that matches students to the right opportunities, helps them build stronger applications, and gives universities a tool to license for their entire student body. The market is crowded, which means the only path is finding the gap none of them fill and owning it completely."
+  }
+]

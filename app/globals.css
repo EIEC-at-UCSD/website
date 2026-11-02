@@ -1,18 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;700&family=Gloock&family=Inclusive+Sans:wght@400;700&display=swap');
 /* Don't Know What To Name This Style
 #################################*/
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Nova+Mono&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-
 :root {
+  --display-stretch: 125%; /* Archivo width axis, 62-125 */
   --bg: #050B15;
   --bg-card: #08111D;
   --bg-card-hover: #0B1728;
   --border: #0F1C30;
   --border-hover: #15263C;
   --text: #E8E8E8;
-  --text-dim: #888888;
-  --muted: #666666;
+  --text-dim: #9A9A9A;
+  --muted: #808080;
   --phosphor: #FFA820;
   --phosphor-dim: rgba(255, 168, 32, 0.15);
   --phosphor-glow: rgba(255, 168, 32, 0.4);
@@ -41,7 +39,7 @@
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Ubuntu', sans-serif;
+  font-family: var(--font-ubuntu), sans-serif;
   font-weight: 400;
   min-height: 100vh;
   overflow-x: hidden;
@@ -89,7 +87,8 @@ nav {
 }
 
 .nav-logo {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display), sans-serif;
+  font-stretch: var(--display-stretch);
   font-weight: 800;
   font-size: 1.125rem;
   letter-spacing: 0.04em;
@@ -114,14 +113,14 @@ nav {
 }
 
 .nav-links a {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 8px 16px;
   border-radius: 100px;
   color: var(--muted);
-  transition: all 0.18s;
+  transition: all 0.12s ease-out;
   border: 1.5px solid transparent;
 }
 
@@ -134,7 +133,6 @@ nav {
   background: var(--phosphor);
   color: var(--bg);
   border-color: var(--phosphor);
-  box-shadow: 0 0 12px var(--phosphor-dim);
 }
 
 .nav-mobile-toggle {
@@ -151,7 +149,7 @@ nav {
   height: 2px;
   background: var(--phosphor);
   margin: 4px 0;
-  transition: all 0.2s;
+  transition: all 0.12s ease-out;
 }
 
 /* Three.js Canvas
@@ -198,7 +196,7 @@ nav {
 }
 
 .hero-eyebrow {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -207,7 +205,6 @@ nav {
   display: flex;
   align-items: center;
   gap: 12px;
-  text-shadow: 0 0 10px var(--phosphor-glow);
 }
 
 .hero-eyebrow::before {
@@ -217,11 +214,14 @@ nav {
   height: 2px;
   background: var(--phosphor);
   border-radius: 2px;
-  box-shadow: 0 0 6px var(--phosphor-glow);
 }
 
+/* the home hero only: Archivo is already at its widest, so open the tracking instead */
+.hero--home h1 { letter-spacing: 0.012em; }
+
 h1 {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display), sans-serif;
+  font-stretch: var(--display-stretch);
   font-weight: 800;
   font-size: clamp(2.8rem, 5vw, 4.5rem);
   line-height: 0.95;
@@ -264,7 +264,7 @@ h1 em::after {
 }
 
 .hero--compact .hero-gear-wrapper {
-  min-height: 250px;
+  min-height: 420px; /* the calendar artwork is ~380px tall; keep it clear of the hero border */
 }
 
 #gear-canvas,
@@ -306,7 +306,7 @@ h1 em::after {
 }
 
 .stat-label {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -314,17 +314,17 @@ h1 em::after {
 }
 
 .stat-number {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display), sans-serif;
+  font-stretch: var(--display-stretch);
   font-weight: 700;
   font-size: 1.5rem;
   color: var(--phosphor);
-  text-shadow: 0 0 8px var(--phosphor-dim);
 }
 
 .stat-number.small {
   font-size: 0.875rem;
   font-weight: 400;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: var(--font-ubuntu), sans-serif;
   max-width: none;
   text-align: left;
   line-height: 1.5;
@@ -384,7 +384,7 @@ h1 em::after {
 }
 
 .section-eyebrow {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -393,7 +393,6 @@ h1 em::after {
   display: flex;
   align-items: center;
   gap: 12px;
-  text-shadow: 0 0 10px var(--phosphor-glow);
 }
 
 .section-eyebrow::before {
@@ -403,11 +402,11 @@ h1 em::after {
   height: 2px;
   background: var(--phosphor);
   border-radius: 2px;
-  box-shadow: 0 0 6px var(--phosphor-glow);
 }
 
 .section-title {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display), sans-serif;
+  font-stretch: var(--display-stretch);
   font-weight: 800;
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   line-height: 1.1;
@@ -417,6 +416,7 @@ h1 em::after {
 }
 
 .section-desc {
+  text-wrap: pretty;
   font-size: 1rem;
   color: var(--text-dim);
   line-height: 1.7;
@@ -438,7 +438,7 @@ h1 em::after {
   border: 1px solid var(--border);
   border-radius: 4px;
   overflow: visible;
-  transition: all 0.3s ease;
+  transition: all 0.12s ease-out;
   position: relative;
 }
 
@@ -466,7 +466,7 @@ h1 em::after {
   pointer-events: none;
   background: linear-gradient(90deg, color-mix(in srgb, var(--waveform-color, var(--phosphor)) 25%, transparent) 0%, var(--waveform-color, var(--phosphor)) 50%, color-mix(in srgb, var(--waveform-color, var(--phosphor)) 25%, transparent) 100%);
   opacity: 0.6;
-  transition: opacity 0.3s;
+  transition: opacity 0.12s ease-out;
 }
 
 .waveform-pulse::after {
@@ -479,7 +479,7 @@ h1 em::after {
   pointer-events: none;
   background: linear-gradient(90deg, color-mix(in srgb, var(--waveform-color, var(--phosphor)) 25%, transparent) 0%, var(--waveform-color, var(--phosphor)) 50%, color-mix(in srgb, var(--waveform-color, var(--phosphor)) 25%, transparent) 100%);
   opacity: 0.6;
-  transition: opacity 0.3s;
+  transition: opacity 0.12s ease-out;
 }
 
 .waveform-pulse:hover::before,
@@ -499,7 +499,7 @@ h1 em::after {
 }
 
 .card-label {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.625rem;
   letter-spacing: 0.12em;
   color: var(--muted);
@@ -508,7 +508,8 @@ h1 em::after {
 }
 
 .card-title {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display), sans-serif;
+  font-stretch: var(--display-stretch);
   font-weight: 700;
   font-size: 1.125rem;
   letter-spacing: -0.01em;
@@ -530,7 +531,7 @@ h1 em::after {
 }
 
 .tag {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.625rem;
   letter-spacing: 0.06em;
   padding: 4px 10px;
@@ -550,7 +551,7 @@ h1 em::after {
 .tilt-card {
   transform-style: preserve-3d;
   will-change: transform;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.12s ease-out;
 }
 
 /* Board / Team Grid
@@ -568,7 +569,7 @@ h1 em::after {
   border-radius: 4px;
   padding: 32px 24px;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.12s ease-out;
   position: relative;
   cursor: pointer;
   font: inherit;
@@ -592,17 +593,16 @@ h1 em::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-weight: 500;
   font-size: 1rem;
   color: var(--phosphor);
   overflow: hidden;
-  transition: border-color 0.3s;
+  transition: border-color 0.12s ease-out;
 }
 
 .team-card:hover .team-avatar {
   border-color: var(--phosphor);
-  box-shadow: 0 0 12px var(--phosphor-dim);
 }
 
 .team-avatar img {
@@ -612,7 +612,8 @@ h1 em::after {
 }
 
 .team-name {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display), sans-serif;
+  font-stretch: var(--display-stretch);
   font-weight: 700;
   font-size: 1rem;
   margin-bottom: 4px;
@@ -620,13 +621,12 @@ h1 em::after {
 }
 
 .team-role {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.625rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--phosphor);
   margin-bottom: 8px;
-  text-shadow: 0 0 8px var(--phosphor-dim);
 }
 
 /* Board Modal — opens when a team-card is clicked.
@@ -643,7 +643,7 @@ h1 em::after {
   padding: 24px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.22s ease;
+  transition: opacity 0.15s ease-out;
 }
 
 .board-modal.open {
@@ -672,7 +672,7 @@ h1 em::after {
   max-height: 90vh;
   overflow-y: auto;
   transform: translateY(8px);
-  transition: transform 0.22s ease;
+  transition: transform 0.15s ease-out;
 }
 
 .board-modal.open .board-modal-card {
@@ -693,7 +693,7 @@ h1 em::after {
   line-height: 1;
   font-family: inherit;
   padding: 0;
-  transition: color 0.18s;
+  transition: color 0.12s ease-out;
 }
 
 .board-modal-close:hover { color: var(--text); }
@@ -704,12 +704,11 @@ h1 em::after {
   border-radius: 50%;
   background: var(--bg);
   border: 2px solid var(--phosphor);
-  box-shadow: 0 0 16px var(--phosphor-dim);
   margin: 0 auto 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-weight: 500;
   font-size: 2rem;
   color: var(--phosphor);
@@ -723,7 +722,8 @@ h1 em::after {
 }
 
 .board-modal-name {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display), sans-serif;
+  font-stretch: var(--display-stretch);
   font-weight: 700;
   font-size: 1.5rem;
   letter-spacing: -0.01em;
@@ -732,13 +732,12 @@ h1 em::after {
 }
 
 .board-modal-role {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--phosphor);
   margin-bottom: 28px;
-  text-shadow: 0 0 8px var(--phosphor-dim);
 }
 
 .board-modal-block {
@@ -755,7 +754,7 @@ h1 em::after {
 }
 
 .board-modal-label {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.625rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -777,36 +776,42 @@ h1 em::after {
 /* About / Mission
 #################################*/
 
-.about-grid {
+/* mission: heading, two side-by-side paragraphs, then a 2x2 grid of values. stacked blocks, so no column ends up taller than its neighbour */
+.about-text {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
+  gap: 0 48px;
+  margin-bottom: 40px;
 }
 
-.about-text h3 {
-  font-family: 'Syne', sans-serif;
+/* spans the full section so the one-sentence mission stays on one line on desktop */
+.about-heading {
+  font-family: var(--font-display), sans-serif;
+  font-stretch: var(--display-stretch);
   font-weight: 700;
-  font-size: 1.125rem;
-  margin-bottom: 12px;
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
   color: var(--text);
 }
 
 .about-text p {
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--text-dim);
   line-height: 1.7;
-  margin-bottom: 16px;
+  margin: 0;
 }
 
 .about-visual {
+  position: relative;
+  z-index: 1;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 4px;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  padding: 36px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 48px;
 }
 
 .about-value {
@@ -815,24 +820,11 @@ h1 em::after {
   align-items: flex-start;
 }
 
-.about-value-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  flex-shrink: 0;
-}
 
-.about-value-icon.green { background: var(--phosphor-dim); color: var(--phosphor); }
-.about-value-icon.blue { background: var(--cyan-dim); color: var(--cyan); }
-.about-value-icon.pink { background: var(--red-dim); color: var(--red); }
-.about-value-icon.orange { background: var(--orange-dim); color: var(--orange); }
 
 .about-value h4 {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display), sans-serif;
+  font-stretch: var(--display-stretch);
   font-weight: 600;
   font-size: 1rem;
   margin-bottom: 4px;
@@ -867,7 +859,8 @@ h1 em::after {
 }
 
 .cta-banner h3 {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display), sans-serif;
+  font-stretch: var(--display-stretch);
   font-weight: 800;
   font-size: 1.5rem;
   color: var(--text);
@@ -881,7 +874,7 @@ h1 em::after {
 }
 
 .cta-btn {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -891,10 +884,9 @@ h1 em::after {
   background: var(--phosphor);
   color: var(--bg);
   cursor: pointer;
-  transition: all 0.18s;
+  transition: all 0.12s ease-out;
   white-space: nowrap;
   font-weight: 500;
-  box-shadow: 0 0 16px var(--phosphor-dim);
 }
 
 /* Image Carousel
@@ -930,7 +922,7 @@ h1 em::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.75rem;
   color: var(--muted);
   letter-spacing: 0.06em;
@@ -948,7 +940,7 @@ h1 em::after {
   font-size: 1rem;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.18s;
+  transition: all 0.12s ease-out;
   z-index: 5;
   display: flex;
   align-items: center;
@@ -981,7 +973,7 @@ h1 em::after {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 4px;
-  transition: all 0.2s;
+  transition: all 0.12s ease-out;
 }
 
 .contact-item:hover {
@@ -989,7 +981,7 @@ h1 em::after {
 }
 
 .contact-label {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.625rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1009,7 +1001,7 @@ h1 em::after {
   border: 1px solid var(--border);
   border-radius: 4px;
   overflow: visible;
-  transition: all 0.3s;
+  transition: all 0.12s ease-out;
 }
 
 .project:hover {
@@ -1029,14 +1021,15 @@ h1 em::after {
 .project-header-left { display: flex; flex-direction: column; gap: 8px; }
 
 .project-num {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.625rem;
   letter-spacing: 0.12em;
   color: var(--muted);
 }
 
 .project-name {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display), sans-serif;
+  font-stretch: var(--display-stretch);
   font-weight: 700;
   font-size: 1.25rem;
   letter-spacing: -0.01em;
@@ -1054,7 +1047,7 @@ h1 em::after {
 .project-tags { display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-start; flex-shrink: 0; }
 
 .ptag {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.625rem;
   letter-spacing: 0.06em;
   padding: 4px 10px;
@@ -1079,7 +1072,7 @@ h1 em::after {
   border: 1.5px solid var(--border);
   border-radius: 4px;
   padding: 24px;
-  transition: all 0.3s;
+  transition: all 0.12s ease-out;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -1101,7 +1094,8 @@ h1 em::after {
 }
 
 .role-title {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display), sans-serif;
+  font-stretch: var(--display-stretch);
   font-weight: 600;
   font-size: 1rem;
   letter-spacing: -0.01em;
@@ -1109,7 +1103,7 @@ h1 em::after {
 }
 
 .role-tag {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.625rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1142,14 +1136,14 @@ h1 em::after {
 }
 
 .role-time {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.625rem;
   color: var(--muted);
   letter-spacing: 0.06em;
 }
 
 .apply-btn {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.625rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1159,10 +1153,9 @@ h1 em::after {
   background: var(--phosphor);
   color: var(--bg);
   cursor: pointer;
-  transition: all 0.18s;
+  transition: all 0.12s ease-out;
   text-decoration: none;
   display: inline-block;
-  box-shadow: 0 0 10px var(--phosphor-dim);
 }
 
 .apply-btn:hover {
@@ -1183,7 +1176,7 @@ h1 em::after {
 }
 
 .filter-btn {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1193,7 +1186,7 @@ h1 em::after {
   color: var(--muted);
   border-radius: 100px;
   cursor: pointer;
-  transition: all 0.18s;
+  transition: all 0.12s ease-out;
 }
 
 .filter-btn:hover { border-color: var(--phosphor); color: var(--phosphor); }
@@ -1201,7 +1194,6 @@ h1 em::after {
   background: var(--phosphor);
   border-color: var(--phosphor);
   color: var(--bg);
-  box-shadow: 0 0 12px var(--phosphor-dim);
 }
 
 /* Events / Timeline
@@ -1238,22 +1230,31 @@ h1 em::after {
   border-radius: 50%;
   background: var(--phosphor);
   border: 3px solid var(--bg);
-  box-shadow: 0 0 8px var(--phosphor-glow);
 }
 
+.timeline-past {
+  display: inline-block;
+  margin-left: 12px;
+  padding: 2px 8px;
+  border: 1.5px solid var(--border-hover);
+  border-radius: 100px;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  vertical-align: middle;
+}
 .timeline-item.past::before {
   background: var(--muted);
   box-shadow: none;
 }
 
 .timeline-date {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--phosphor);
   margin-bottom: 8px;
-  text-shadow: 0 0 8px var(--phosphor-dim);
 }
 
 .timeline-item.past .timeline-date {
@@ -1266,7 +1267,7 @@ h1 em::after {
   border: 1px solid var(--border);
   border-radius: 4px;
   padding: 24px 32px;
-  transition: all 0.3s;
+  transition: all 0.12s ease-out;
 }
 
 .timeline-card:hover {
@@ -1275,7 +1276,8 @@ h1 em::after {
 }
 
 .timeline-card h3 {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display), sans-serif;
+  font-stretch: var(--display-stretch);
   font-weight: 700;
   font-size: 1.125rem;
   margin-bottom: 8px;
@@ -1296,7 +1298,7 @@ h1 em::after {
 }
 
 .event-meta span {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.625rem;
   letter-spacing: 0.06em;
   color: var(--muted);
@@ -1317,7 +1319,7 @@ footer {
 }
 
 .footer-text {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.625rem;
   letter-spacing: 0.08em;
   color: var(--muted);
@@ -1331,11 +1333,11 @@ footer {
 }
 
 .footer-links a {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.625rem;
   letter-spacing: 0.08em;
   color: var(--muted);
-  transition: color 0.18s;
+  transition: color 0.12s ease-out;
 }
 
 .footer-links a:hover {
@@ -1362,7 +1364,6 @@ footer {
   background: linear-gradient(90deg, transparent, var(--phosphor), transparent);
   border: none;
   margin: 0;
-  box-shadow: 0 0 8px var(--phosphor-dim);
 }
 
 
@@ -1380,7 +1381,8 @@ footer {
 }
 
 .empty-state-title {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display), sans-serif;
+  font-stretch: var(--display-stretch);
   font-weight: 700;
   font-size: 1.125rem;
   color: var(--text);
@@ -1450,7 +1452,8 @@ footer {
 }
 
 .four04-code {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display), sans-serif;
+  font-stretch: var(--display-stretch);
   font-weight: 800;
   font-size: clamp(6rem, 15vw, 12rem);
   line-height: 1;
@@ -1476,7 +1479,8 @@ footer {
 }
 
 .four04-title {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display), sans-serif;
+  font-stretch: var(--display-stretch);
   font-weight: 700;
   font-size: 1.125rem;
   color: var(--text);
@@ -1492,7 +1496,7 @@ footer {
 }
 
 .four04-home {
-  font-family: 'Nova Mono', monospace;
+  font-family: var(--font-nova-mono), monospace;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1502,9 +1506,8 @@ footer {
   background: var(--phosphor);
   color: var(--bg);
   cursor: pointer;
-  transition: all 0.18s;
+  transition: all 0.12s ease-out;
   font-weight: 500;
-  box-shadow: 0 0 16px var(--phosphor-dim);
   display: inline-block;
 }
 
@@ -1567,7 +1570,8 @@ footer {
   .section { padding: 48px 20px; }
   .filter-bar { padding-left: 20px; padding-right: 20px; }
 
-  .about-grid { grid-template-columns: 1fr; }
+  .about-text, .about-visual { grid-template-columns: 1fr; }
+  .about-text { gap: 16px; }
   .team-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
   .card-grid { grid-template-columns: 1fr; }
   .roles-grid { grid-template-columns: 1fr; }
@@ -1592,89 +1596,8 @@ footer {
   }
 }
 
-/* hackathon promo - styled blue for SoPE hackathon 
-#################################*/
-
-.hackathon-promo-wrap {
-  display: inline-block;
-  position: relative;
-  margin-top: 28px;
-}
-
-.hackathon-promo-particles {
-  position: absolute;
-  top: -55px;
-  bottom: -55px;
-  left: -70px;
-  right: -70px;
-  width: calc(100% + 140px);
-  height: calc(100% + 110px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.hackathon-promo {
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.95rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 16px 34px;
-  border-radius: 100px;
-  border: 1.5px solid #10BAE0;
-  background: #10BAE0;
-  color: #050B15;
-  font-weight: 500;
-  box-shadow: 0 0 16px rgba(16, 186, 224, 0.35);
-  transition: all 0.18s;
-  white-space: nowrap;
-}
-
-.hackathon-promo:hover {
-  background: #3FD0F0;
-  border-color: #3FD0F0;
-  box-shadow: 0 0 22px rgba(16, 186, 224, 0.55);
-  transform: translateY(-1px);
-}
-
-.nav-announce {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 10px;
-  font-family: 'DM Mono', monospace;
-  font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: #ffffff;
-  white-space: nowrap;
-  transition: color 0.18s;
-}
-
-.nav-announce-arrow {
-  color: #10BAE0;
-  font-size: 1.1rem;
-  line-height: 1;
-  transition: transform 0.18s;
-}
-
-.nav-announce:hover {
-  color: #10BAE0;
-}
-
-.nav-announce:hover .nav-announce-arrow {
-  transform: translateX(4px);
-}
-
-@media (max-width: 960px) {
-  .nav-announce {
-    font-size: 0.85rem;
-    gap: 8px;
-  }
-  .nav-announce-arrow { font-size: 0.95rem; }
-}
-
-@media (max-width: 780px) {
-  .nav-announce { display: none; }
+.event-meta span + span::before {
+  content: "·";
+  margin-right: 8px;
+  color: var(--muted);
 }

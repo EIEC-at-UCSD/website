@@ -21,7 +21,7 @@ return <>
 <div className="hero-wrapper">
 <section className="hero">
 <div className="hero-left">
-<Content as="div" name="recruitment_hero_eyebrow" content={data.content} fallback={"Open roles · Spring 2026"} className="hero-eyebrow" />
+<Content as="div" name="recruitment_hero_eyebrow" content={data.content} fallback={"Open roles"} className="hero-eyebrow" />
 <Content as="h1" name="recruitment_hero_heading" content={data.content} fallback={"Build something<br><em data-text=\"real.\">real.</em>"} html />
 <Content as="p" name="recruitment_hero_desc" content={data.content} fallback={"EIEC's portfolio of early-stage ventures is looking for students to join as volunteer interns. These are zero-to-one projects: scrappy, ambiguous, and genuinely exciting. You won't be shadowing anyone. You'll be doing the work."} className="hero-sub" />
 </div>
