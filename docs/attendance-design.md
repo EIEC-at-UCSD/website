@@ -11,6 +11,7 @@ The current public website and its new 2026–27 Google Sheet remain the sources
 ## Confirmed design decisions
 
 - Managed authentication and database: the club has created a Supabase Free project. Private attendance uses PostgreSQL row-level security.
+- Initial email sender: the existing club Gmail, configured as custom SMTP with a Google app password stored only in Supabase.
 - Accounts use verified `@ucsd.edu` email and one-time email sign-in codes. Passwords and UCSD SSO are not part of this implementation.
 - The initial admin is the tech lead's UCSD account, confirmed privately during setup and promoted by a project operator only after email verification.
 - Admins may promote and remove other admins. The portal prevents removing the final admin.

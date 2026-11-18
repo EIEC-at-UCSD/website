@@ -61,6 +61,21 @@ Configure a club-owned SMTP sender in Authentication → Email / SMTP Settings. 
 
 Use the sender provider's documented host, port, username, password and verified From address. Enter the sender password directly in Supabase, never in this repository or chat. Choose the service with the board before creating a paid subscription or purchasing a domain. Test delivery to an actual UCSD inbox, including junk folders, and set sending limits appropriate for a meeting with many members signing in at once.
 
+The club chose its existing Gmail for the initial rollout. A club account owner must enable Google 2-Step Verification, then create an app password named `EIEC Supabase` at [Google App passwords](https://myaccount.google.com/apppasswords). This protects the sender account and does not add MFA to the EIEC website. Enter the app password directly into Supabase's SMTP password field; do not use the normal Gmail password.
+
+| SMTP setting | Value |
+| --- | --- |
+| Sender email | `eiec.at.ucsd@gmail.com` |
+| Sender name | `EIEC at UCSD` |
+| Host | `smtp.gmail.com` |
+| Port | `465` (implicit SSL/TLS) |
+| Username | `eiec.at.ucsd@gmail.com` |
+| Password | The Google app password, entered privately by the club account owner |
+
+Google documents a limit of up to 500 outgoing messages per day for personal Gmail accounts, shared with regular club email; delivery may be limited earlier by anti-abuse protections. Supabase initially limits custom SMTP to 30 messages per hour. Review its Auth rate limit before a full-club rollout, while retaining abuse protection and staying within Gmail's capacity. Changing the Gmail account password revokes its app passwords, so update Supabase after that change. If club volume outgrows Gmail, move to a dedicated transactional sender.
+
+Sender references: [Google app passwords](https://support.google.com/accounts/answer/185833), [Gmail SMTP settings and limits](https://developers.google.com/workspace/gmail/imap/imap-smtp).
+
 References: [Supabase custom SMTP](https://supabase.com/docs/guides/auth/auth-smtp), [email OTP](https://supabase.com/docs/guides/auth/auth-email-passwordless), [redirect URLs](https://supabase.com/docs/guides/auth/redirect-urls).
 
 ## 4. Initial admin
