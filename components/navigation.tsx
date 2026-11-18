@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-const links = [["/", "Home"], ["/projects", "Projects"], ["/events", "Events"]];
+const links = [["/", "Home"], ["/projects", "Projects"], ["/events", "Events"], ["/check-in", "Check in"], ["/account", "Account"]];
 
 export function Navigation({ hackathon = false }: { hackathon?: boolean }) {
   const pathname = usePathname();

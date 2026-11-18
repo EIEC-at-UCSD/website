@@ -26,7 +26,13 @@ Import `EIEC-at-UCSD/website` into the EIEC Vercel account with **Next.js** as t
 
 Try `eiecucsd` as the project name if that subdomain is free. Once the Git integration is connected, merges to `main` go to production and other branches get preview deployments. Account or plan limits are settled in Vercel itself; nothing in this repository changes account settings.
 
-The existing content needs no environment variables. Optional settings are listed in `.env.example`. Local overrides go in `.env.local`, production ones in Vercel's environment settings.
+The existing public content needs no environment variables. Attendance requires the Supabase values listed in `.env.example`. Local overrides go in `.env.local`, production ones in Vercel's environment settings.
+
+## Member accounts and attendance
+
+Members use verified UCSD email sign-in, check in by event code or QR, and see their private attendance count and history. Board admins create attendance events, issue/close codes, review attendance and manage admin access. There is no public leaderboard. The account and attendance database is separate from the public Google Sheet.
+
+See [setup and operation](docs/attendance-setup.md) for the database migration, email sender, initial admin, privacy and launch checks. [Design decisions](docs/attendance-design.md) record the agreed scope. Hosted authentication and email delivery must be configured and tested before enabling member sign-ups.
 
 ## Updating the website
 
