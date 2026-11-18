@@ -15,6 +15,6 @@ export default async function SignInPage({ searchParams }: { searchParams: Promi
   const next = safeReturnPath(params.next);
   if (await getMember()) redirect(next);
   return <AttendanceShell eyebrow="EIEC membership" title="Your place in the club." description="Sign in to check in at events and see your EIEC attendance.">
-    {attendanceConfigured() ? <>{params.error && <AttendanceNotice tone="error">That sign-in link could not be verified. Request a new code below.</AttendanceNotice>}<SignInForm next={next} /></> : <AttendanceNotice>Member accounts are being set up. For now, contact <a href={`mailto:${contactEmail}`} className="attendance-text-link">{contactEmail}</a> for help with attendance.</AttendanceNotice>}
+    {attendanceConfigured() ? <>{params.error && <AttendanceNotice tone="error">That email link could not be verified. Sign in below, or use Forgot password to request a new reset code.</AttendanceNotice>}<SignInForm next={next} /></> : <AttendanceNotice>Member accounts are being set up. For now, contact <a href={`mailto:${contactEmail}`} className="attendance-text-link">{contactEmail}</a> for help with attendance.</AttendanceNotice>}
   </AttendanceShell>;
 }

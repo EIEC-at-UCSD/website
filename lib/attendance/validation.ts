@@ -1,5 +1,23 @@
 export class AttendanceInputError extends Error {}
 
+export const PASSWORD_MIN_LENGTH = 15;
+export const PASSWORD_MAX_LENGTH = 72;
+
+export function normalizeMemberEmail(value: string): string {
+  const email = value.trim().toLowerCase();
+  if (email.length > 254 || !/^[^@\s]+@ucsd\.edu$/.test(email)) throw new AttendanceInputError("Use your @ucsd.edu email address.");
+  return email;
+}
+
+export function validateNewPassword(value: string, confirmation: string): string {
+  if ([...value].length < PASSWORD_MIN_LENGTH) throw new AttendanceInputError(`Use at least ${PASSWORD_MIN_LENGTH} characters for your password.`);
+  // Supabase uses bcrypt. Reject oversized UTF-8 inputs rather than allowing
+  // different passwords to share a truncated prefix.
+  if (new TextEncoder().encode(value).length > PASSWORD_MAX_LENGTH || value.includes("\u0000")) throw new AttendanceInputError("That password is too long or contains an unsupported character. Use a shorter passphrase.");
+  if (value !== confirmation) throw new AttendanceInputError("The passwords do not match.");
+  return value;
+}
+
 // Ten unambiguous base-32 characters give an event code 50 bits of entropy.
 export const EVENT_CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 

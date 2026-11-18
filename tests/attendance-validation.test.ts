@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { normalizeEventCode, safeReturnPath, validateDisplayName, validateEventTitle } from "../lib/attendance/validation";
+import { normalizeEventCode, safeReturnPath, validateDisplayName, validateEventTitle, normalizeMemberEmail, validateNewPassword } from "../lib/attendance/validation";
 import { generateEventCode, hashEventCode, checkInURL } from "../lib/attendance/codes";
 
 test("event codes use strong random values and accept harmless formatting differences", () => {
@@ -36,4 +36,17 @@ test("profile and event names have bounded lengths and reject control characters
   assert.throws(() => validateDisplayName("A"));
   assert.throws(() => validateEventTitle("x".repeat(121)));
   assert.throws(() => validateEventTitle("Meeting\u0000"));
+});
+
+test("member email validation requires the exact UCSD domain", () => {
+  assert.equal(normalizeMemberEmail(" Alex@UCSD.EDU "), "alex@ucsd.edu");
+  for (const email of ["alex@example.com", "alex@ucsd.edu.evil.example", "alex@sub.ucsd.edu", "a@@ucsd.edu", "a\nb@ucsd.edu", "@ucsd.edu"]) assert.throws(() => normalizeMemberEmail(email));
+});
+
+test("password validation preserves spaces and rejects mismatches and bcrypt truncation", () => {
+  const phrase = "  a long EIEC passphrase  ";
+  assert.equal(validateNewPassword(phrase, phrase), phrase);
+  assert.equal(validateNewPassword("a".repeat(72), "a".repeat(72)), "a".repeat(72));
+  for (const password of ["short", "a".repeat(14), "a".repeat(73), "é".repeat(37), "long enough\u0000password"]) assert.throws(() => validateNewPassword(password, password));
+  assert.throws(() => validateNewPassword(phrase, phrase.trim()), /match/);
 });

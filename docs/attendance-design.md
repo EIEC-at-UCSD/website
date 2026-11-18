@@ -12,10 +12,10 @@ The current public website and its new 2026–27 Google Sheet remain the sources
 
 - Managed authentication and database: the club has created a Supabase Free project. Private attendance uses PostgreSQL row-level security.
 - Initial email sender: the existing club Gmail, configured as custom SMTP with a Google app password stored only in Supabase.
-- Accounts use verified `@ucsd.edu` email and one-time email sign-in codes. Passwords and UCSD SSO are not part of this implementation.
+- Accounts use verified `@ucsd.edu` email and an EIEC password. Email codes are used during registration and password recovery, rather than every sign-in. UCSD SSO is not part of this implementation.
 - The initial admin is the tech lead's UCSD account, confirmed privately during setup and promoted by a project operator only after email verification.
 - Admins may promote and remove other admins. The portal prevents removing the final admin.
-- Admins use the same verified email sign-in as members. The club declined an extra authenticator-app step. The database policy is explicitly set to false; no MFA enrollment is required or shown.
+- Admins use the same verified email and password sign-in as members. The club declined an extra authenticator-app step. The database policy is explicitly set to false; no MFA enrollment is required or shown.
 - An admin chooses a closing time each time they issue a check-in code. There is no assumed 30-minute default; admins can also close check-in early.
 
 The reference ACM member login uses email and password. The user confirmed that their regular member login did not ask for MFA. This observation does not establish ACM's private admin policies.

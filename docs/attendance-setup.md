@@ -8,7 +8,7 @@ Use an empty Supabase project dedicated to EIEC accounts. Keep the Data API enab
 
 In the project's SQL Editor, create a query, paste the complete contents of `supabase/migrations/202611180001_attendance.sql`, and run it once as the project operator. It is a single transaction. Do not rerun a successful initial migration or remove its objects to fix an error; investigate the error first. Future changes should be new migrations.
 
-The migration creates the profiles, events, attendance, private role/code/rate-limit/audit tables, RLS policies and narrowly scoped database functions. It enforces verified UCSD accounts, one attendance entry per event/member, server-side admin authorization and last-admin protection. Email verification alone is the club's chosen admin sign-in policy; no authenticator enrollment is required.
+The migration creates the profiles, events, attendance, private role/code/rate-limit/audit tables, RLS policies and narrowly scoped database functions. It enforces verified UCSD accounts, one attendance entry per event/member, server-side admin authorization and last-admin protection. The website uses verified UCSD email and password sign-in; no authenticator enrollment is required. Changing from email-code sign-in to password sign-in requires no attendance schema change. Do not rerun an already applied migration.
 
 Do this before creating the first member account, since a database trigger creates its profile. An unrelated pre-existing account in this project needs an operator-reviewed backfill before it can use attendance.
 
@@ -32,7 +32,7 @@ For previews, QR links use Vercel's deployment hostname. Avoid giving untrusted 
 
 ## 3. Supabase email authentication
 
-In Authentication → Sign In / Providers, enable Email and keep **Confirm email enabled**. Do not enable anonymous sign-ins. The database also rejects account creation outside `@ucsd.edu`, even if someone bypasses the website form.
+In Authentication → Sign In / Providers, enable Email and keep **Confirm email enabled**. Set the minimum password length to **15** in Supabase as well as in the website, so direct API requests cannot bypass the length requirement. Passwords support passphrases without mandatory character categories. The website rejects inputs longer than bcrypt's 72-byte UTF-8 limit without trimming them. Enable **Require reauthentication when changing password**; recovery creates a fresh verified session. An older session can use Forgot password to obtain fresh verification before updating a password. Keep authentication and email rate limits enabled. Do not enable anonymous sign-ins. The database also rejects account creation outside `@ucsd.edu`, even if someone bypasses the website form.
 
 In Authentication → URL Configuration, set the Site URL to `https://eiecatucsd.vercel.app`. Add exact redirect URLs for the environments you will actually use:
 
@@ -42,18 +42,31 @@ http://127.0.0.1:3000/auth/callback
 http://localhost:3000/auth/callback
 ```
 
-Add an exact preview deployment's `/auth/callback` URL when testing that preview. Do not allow arbitrary external destinations. The normal user flow enters an email code on the same page; the callback also supports Supabase confirmation links.
+Add an exact preview deployment's `/auth/callback` URL when testing that preview. Do not allow arbitrary external destinations. New members create a password, then enter an email verification code once to finish registration. Returning members use email and password. The callback also supports Supabase confirmation links.
 
-Under Authentication → Email Templates, put the following body in both **Confirm signup** and **Magic Link** templates so both new and returning members receive an on-page sign-in code:
+Under Authentication → Email Templates, put the following body in **Confirm signup**:
+
+The source templates are also saved as `supabase/templates/confirm-signup.html` and `supabase/templates/reset-password.html`. Saving these files in Git does not configure the hosted project; paste their contents into the matching Supabase templates and save them there.
 
 ```html
-<h2>Your EIEC sign-in code</h2>
-<p>Enter this code on the EIEC website:</p>
+<h2>Verify your EIEC account</h2>
+<p>Enter this code on the EIEC website to verify your UCSD email:</p>
 <p style="font-size: 28px; font-weight: bold; letter-spacing: 4px;">{{ .Token }}</p>
 <p>If you did not request this code, you can ignore this email. Do not share it.</p>
 ```
 
-Keep OTP expiry short enough for sign-in and retain resend/verification rate limits. Event code closing times are a separate setting selected by event admins, not the email OTP lifetime.
+Put this body in **Reset Password**:
+
+```html
+<h2>Reset your EIEC password</h2>
+<p>Enter this password reset code on the EIEC website:</p>
+<p style="font-size: 28px; font-weight: bold; letter-spacing: 4px;">{{ .Token }}</p>
+<p>If you did not request this reset, ignore this email. Do not share the code.</p>
+```
+
+The website does not use Magic Link for returning sign-ins. Keep OTP expiry short enough for verification/recovery and retain resend/verification rate limits. Event code closing times are a separate setting selected by event admins, not the email OTP lifetime. Supabase password storage, sign-up, verification and reset are handled through its Auth SDK; do not add password columns to attendance tables or log request passwords.
+
+Use **Forgot password?** to request a reset code. The UI gives the same response for existing and unknown addresses. After successful recovery-code verification, `/account/password` requires a verified authenticated account before allowing a new password to be saved. A failed password update can be retried without redeeming the already consumed recovery code again. Existing accounts created during email-code testing can set their initial password through this same recovery flow.
 
 ### Email delivery is a launch dependency
 
@@ -76,7 +89,7 @@ Google documents a limit of up to 500 outgoing messages per day for personal Gma
 
 Sender references: [Google app passwords](https://support.google.com/accounts/answer/185833), [Gmail SMTP settings and limits](https://developers.google.com/workspace/gmail/imap/imap-smtp).
 
-References: [Supabase custom SMTP](https://supabase.com/docs/guides/auth/auth-smtp), [email OTP](https://supabase.com/docs/guides/auth/auth-email-passwordless), [redirect URLs](https://supabase.com/docs/guides/auth/redirect-urls).
+References: [Supabase custom SMTP](https://supabase.com/docs/guides/auth/auth-smtp), [password authentication](https://supabase.com/docs/guides/auth/passwords), [password security](https://supabase.com/docs/guides/auth/password-security), [redirect URLs](https://supabase.com/docs/guides/auth/redirect-urls).
 
 ## 4. Initial admin
 
@@ -96,7 +109,7 @@ If all admins lose access, an authorized project owner must review the recovery 
 
 1. Create an event with its name, date/time and optional location. This private attendance event does not automatically add an item to the public Google Sheet calendar.
 2. Choose a closing time, then select **Generate code and QR**. Check-in opens immediately. Share the QR or the displayed ten-character code at the event.
-3. Members sign in with their verified UCSD email and explicitly select **Check in**. Merely opening or previewing a QR link never records attendance.
+3. Members sign in with their verified UCSD email and EIEC password, then explicitly select **Check in**. Merely opening or previewing a QR link never records attendance.
 4. Duplicate submissions count once. Close check-in early when needed. Generating a replacement code invalidates the old one.
 5. Review attendees on the event page or individual member totals/history under Members.
 
@@ -118,7 +131,7 @@ The DB suite resets schemas and must only run against an isolated disposable loc
 
 Before launch, verify on the hosted setup with two separate eligible member accounts and a board admin:
 
-- New account confirmation, returning sign-in, expired/wrong email code, sign-out and signed-out route protection.
+- New account email verification, returning password sign-in, wrong password, unverified-account rejection/resend, expired/wrong verification and recovery codes, password reset/save/retry, old/new password behavior, sign-out and signed-out route protection. Test unknown-account reset responses without exposing account existence.
 - QR → sign-in → check-in on a phone, manual code entry, count/history update and duplicate check-in.
 - Invalid, expired, closed and replaced event codes; opening a QR without submitting must not record attendance.
 - A member cannot read someone else's profile/history, create attendance directly or self-promote through the API.
