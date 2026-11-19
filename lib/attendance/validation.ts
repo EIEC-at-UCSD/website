@@ -1,6 +1,6 @@
 export class AttendanceInputError extends Error {}
 
-export const PASSWORD_MIN_LENGTH = 15;
+export const PASSWORD_MIN_LENGTH = 12;
 export const PASSWORD_MAX_LENGTH = 72;
 
 export function normalizeMemberEmail(value: string): string {
