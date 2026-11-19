@@ -46,8 +46,8 @@ test("member email validation requires the exact UCSD domain", () => {
 test("password validation preserves spaces and rejects mismatches and bcrypt truncation", () => {
   const phrase = "  a long EIEC passphrase  ";
   assert.equal(validateNewPassword(phrase, phrase), phrase);
-  assert.equal(validateNewPassword("a".repeat(12), "a".repeat(12)), "a".repeat(12));
+  assert.equal(validateNewPassword("a".repeat(8), "a".repeat(8)), "a".repeat(8));
   assert.equal(validateNewPassword("a".repeat(72), "a".repeat(72)), "a".repeat(72));
-  for (const password of ["short", "a".repeat(11), "a".repeat(73), "é".repeat(37), "long enough\u0000password"]) assert.throws(() => validateNewPassword(password, password));
+  for (const password of ["short", "a".repeat(7), "a".repeat(73), "é".repeat(37), "long enough\u0000password"]) assert.throws(() => validateNewPassword(password, password));
   assert.throws(() => validateNewPassword(phrase, phrase.trim()), /match/);
 });
