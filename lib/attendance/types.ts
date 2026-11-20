@@ -13,6 +13,8 @@ export type AttendanceEvent = {
   title: string;
   starts_at: string;
   location: string;
+  points: number;
+  archived_at: string | null;
   created_at: string;
   check_in_opens_at: string | null;
   check_in_closes_at: string | null;
@@ -33,7 +35,14 @@ export type FormState = {
 export type CheckInState = FormState & {
   eventTitle?: string;
   alreadyCheckedIn?: boolean;
+  points?: number;
 };
+
+export type EventCode = { code: string; url: string; opensAt: string; closesAt: string };
+
+export type PointsSummary = { points: number; events: number; rank: number | null; show_on_leaderboard: boolean; hidden_by_admin: boolean };
+
+export type LeaderboardRow = { rank: number; name: string; points: number; events: number; total_members: number; total_check_ins: number };
 
 export type CheckInAction = (previous: CheckInState, form: FormData) => Promise<CheckInState>;
 

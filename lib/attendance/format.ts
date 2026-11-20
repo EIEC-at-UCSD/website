@@ -10,3 +10,14 @@ export function pageOffset(value?: string) {
 export function isCheckInOpen(opensAt: string | null, closesAt: string | null) {
   return Boolean(opensAt && closesAt && new Date(opensAt).getTime() <= Date.now() && new Date(closesAt).getTime() > Date.now());
 }
+
+export type CheckInWindow = "open" | "scheduled" | "closed";
+
+export function checkInWindow(opensAt: string | null, closesAt: string | null): CheckInWindow {
+  if (!opensAt || !closesAt || new Date(closesAt).getTime() <= Date.now()) return "closed";
+  return new Date(opensAt).getTime() > Date.now() ? "scheduled" : "open";
+}
+
+export function plural(count: number, word: string) {
+  return `${count} ${word}${count === 1 ? "" : "s"}`;
+}

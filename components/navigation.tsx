@@ -2,13 +2,30 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const links = [["/", "Home"], ["/projects", "Projects"], ["/events", "Events"], ["/check-in", "Check in"], ["/account", "Account"]];
+const links = [["/", "Home"], ["/projects", "Projects"], ["/events", "Events"], ["/points", "Points"], ["/check-in", "Check in"], ["/account", "Account"]];
+const membersOnly = new Set(["/points"]);
+
+// a display hint only, read from the supabase session cookie so public pages
+// stay static. the points page and the database check sign-in for real
+function useSignedIn(pathname: string) {
+  const [signedIn, setSignedIn] = useState(false);
+  useEffect(() => {
+    setSignedIn(document.cookie.split("; ").some((cookie) => /^sb-.+-auth-token(\.\d+)?=/.test(cookie)));
+  }, [pathname]);
+  return signedIn;
+}
+
+function useVisibleLinks(pathname: string) {
+  const signedIn = useSignedIn(pathname);
+  return links.filter(([href]) => signedIn || !membersOnly.has(href));
+}
 
 export function Navigation({ hackathon = false }: { hackathon?: boolean }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const visibleLinks = useVisibleLinks(pathname);
   return <nav aria-label="Main navigation">
     <Link href={hackathon ? "/hackathon" : "/"} className="nav-logo" onClick={() => setOpen(false)}>
       <img src="/EIEC%20Logo.png" alt="EIEC logo" className={hackathon ? "eiec-logo" : undefined} width={44} height={44} />
@@ -18,7 +35,7 @@ export function Navigation({ hackathon = false }: { hackathon?: boolean }) {
       {hackathon ? <>
         {["Why", "Format", "Schedule", "FAQ"].map((label, i) => <a key={label} href={`#${["why", "challenge", "schedule", "faq"][i]}`} onClick={() => setOpen(false)}>{label}</a>)}
         <Link href="/" className="nav-link-home" onClick={() => setOpen(false)}>EIEC Home</Link>
-      </> : links.map(([href, label]) => <Link key={href} href={href} className={pathname === href ? "active" : undefined} aria-current={pathname === href ? "page" : undefined} onClick={() => setOpen(false)}>{label}</Link>)}
+      </> : visibleLinks.map(([href, label]) => <Link key={href} href={href} className={pathname === href ? "active" : undefined} aria-current={pathname === href ? "page" : undefined} onClick={() => setOpen(false)}>{label}</Link>)}
     </div>
     {hackathon && <a href="https://docs.google.com/forms/d/1QGaiU10ki5ufS47aFEy7snF__JctijDUYjaYoNR4EHI/viewform" target="_blank" rel="noopener noreferrer" className="nav-cta">Interested? →</a>}
     <button type="button" className="nav-mobile-toggle" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls={hackathon ? "hackathon-navigation" : "site-navigation"} onClick={() => setOpen(!open)} onKeyDown={(event) => { if (event.key === "Escape") setOpen(false); }}><span /><span /><span /></button>
@@ -26,5 +43,6 @@ export function Navigation({ hackathon = false }: { hackathon?: boolean }) {
 }
 
 export function Footer() {
-  return <footer><span className="footer-text">EIEC · Engineering Innovators &amp; Entrepreneurs · <span>UCSD</span></span><div className="footer-links">{links.map(([href, label]) => <Link key={href} href={href}>{label}</Link>)}</div></footer>;
+  const visibleLinks = useVisibleLinks(usePathname());
+  return <footer><span className="footer-text">EIEC · Engineering Innovators &amp; Entrepreneurs · <span>UCSD</span></span><div className="footer-links">{visibleLinks.map(([href, label]) => <Link key={href} href={href}>{label}</Link>)}</div></footer>;
 }

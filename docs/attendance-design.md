@@ -2,7 +2,9 @@
 
 ## Confirmed scope
 
-Members register and authenticate, check in by QR or manual event code, and see their own attendance count and history. A member can receive one attendance record per event. There is no public leaderboard or public member directory.
+Members register and authenticate, check in by QR or manual event code, and see their own points, rank and history. A member can receive one attendance record per event, worth that event's points at the time. A points board, visible only to signed-in members, ranks members by points. It shows first name and last initial only, with a per-member opt-out. Nothing about members is public.
+
+Points and the board were added on 2026-11-19 to match the original spec, along with admin corrections (add by hand, remove, CSV export), scheduled check-in windows, archiving and optional Google sign-in.
 
 Board admins create attendance events, open or close check-in, issue or replace codes, view member attendance and promote registered users. The first admin is the account belonging to the tech lead, with its verified email explicitly confirmed before bootstrap.
 
@@ -25,7 +27,7 @@ The reference ACM member login uses email and password. The user confirmed that 
 - Identity is checked on the server for every protected read and mutation. Browser-supplied member IDs and roles are never trusted.
 - Members can read only their own private records. Admin permissions are checked against authoritative database roles, not editable profile metadata or a cached browser flag.
 - A database unique constraint on `(event_id, member_id)` enforces one check-in even when requests race or are retried.
-- Event codes use cryptographic randomness. The database stores a hash, not the raw code. Codes expire, can be closed or replaced, and are compared only on the server.
+- Event codes use cryptographic randomness, expire, can be closed or replaced, and are compared only on the server by hash. The current raw code is also kept in a private table so an admin can redisplay the QR after a reload; only an admin function can read it. A short-lived code that still needs a verified account is worth little to an attacker, and losing the QR mid-meeting was the larger risk.
 - QR links point to the website's check-in page with the code in the URL fragment, which is not sent in HTTP requests. The user must authenticate and explicitly submit check-in; opening a URL never records attendance.
 - Brute-force protection must use shared durable storage rather than an in-memory counter, so it works across Vercel instances.
 - Private pages and authentication responses must not be cached in a public CDN. Admin changes and event code changes are auditable without recording raw codes.

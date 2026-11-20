@@ -5,7 +5,7 @@ export const PASSWORD_MAX_LENGTH = 72;
 
 export function normalizeMemberEmail(value: string): string {
   const email = value.trim().toLowerCase();
-  if (email.length > 254 || !/^[^@\s]+@ucsd\.edu$/.test(email)) throw new AttendanceInputError("Use your @ucsd.edu email address.");
+  if (email.length > 254 || !/^[^@\s+]+@ucsd\.edu$/.test(email)) throw new AttendanceInputError("Use your own @ucsd.edu email address, without a + alias.");
   return email;
 }
 
@@ -35,8 +35,8 @@ export function normalizeEventCode(value: unknown): string {
 export function validateDisplayName(value: unknown): string {
   if (typeof value !== "string") throw new AttendanceInputError("Enter your name.");
   const name = value.trim().replace(/\s+/g, " ");
-  if (name.length < 2 || name.length > 80 || /[\u0000-\u001f\u007f]/.test(name)) {
-    throw new AttendanceInputError("Use a name between 2 and 80 characters.");
+  if (name.length < 2 || name.length > 80 || !/^\p{L}[\p{L}\p{M} .'-]*$/u.test(name)) {
+    throw new AttendanceInputError("Use your name: letters, spaces, apostrophes and hyphens, 2 to 80 characters.");
   }
   return name;
 }
@@ -47,7 +47,7 @@ export function safeReturnPath(value: unknown): string {
   try {
     const url = new URL(value, "https://eiec.invalid");
     if (url.origin !== "https://eiec.invalid") return "/account";
-    if (!["/account", "/check-in", "/admin"].some((path) => url.pathname === path || url.pathname.startsWith(`${path}/`))) return "/account";
+    if (!["/account", "/check-in", "/admin", "/points"].some((path) => url.pathname === path || url.pathname.startsWith(`${path}/`))) return "/account";
     // Codes must never be carried in redirect query strings or server logs.
     return url.pathname;
   } catch { return "/account"; }
@@ -74,4 +74,30 @@ export function validateDate(value: unknown): string {
     throw new AttendanceInputError("Choose a valid date and time.");
   }
   return new Date(value).toISOString();
+}
+
+export function validatePoints(value: unknown, fallback?: number): number {
+  if ((value === null || value === undefined || value === "") && fallback !== undefined) return fallback;
+  const points = typeof value === "string" && /^\d{1,4}$/.test(value.trim()) ? Number(value.trim()) : NaN;
+  if (!Number.isInteger(points) || points < 0 || points > 1000) throw new AttendanceInputError("Points must be a whole number from 0 to 1000.");
+  return points;
+}
+
+export function validateNote(value: unknown): string {
+  const note = typeof value === "string" ? value.trim() : "";
+  if (note.length > 200 || /[\u0000-\u001f\u007f]/.test(note)) throw new AttendanceInputError("Use a note of 200 characters or fewer.");
+  return note;
+}
+
+export function validateLocation(value: unknown): string {
+  const location = typeof value === "string" ? value.trim() : "";
+  if (location.length > 160 || /[\u0000-\u001f\u007f]/.test(location)) throw new AttendanceInputError("Use a location of 160 characters or fewer.");
+  return location;
+}
+
+/** spreadsheet apps run cells that start with = + - @ as formulas, so those get a leading quote */
+export function csvCell(value: unknown): string {
+  let text = value === null || value === undefined ? "" : String(value);
+  if (/^[=+\-@\t\r]/.test(text)) text = `'${text}`;
+  return /[",\n\r]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
 }

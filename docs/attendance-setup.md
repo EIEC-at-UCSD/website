@@ -6,7 +6,7 @@ The public club pages continue to use the published content Sheet. Accounts, rol
 
 Use an empty Supabase project dedicated to EIEC accounts. Keep the Data API enabled, automatic grants to new tables disabled, and automatic RLS enabled. The migration also explicitly enables RLS and grants only the access the website needs.
 
-In the project's SQL Editor, create a query, paste the complete contents of `supabase/migrations/202611180001_attendance.sql`, and run it once as the project operator. It is a single transaction. Do not rerun a successful initial migration or remove its objects to fix an error; investigate the error first. Future changes should be new migrations.
+In the project's SQL Editor, run the two files in `supabase/migrations/` in name order, each pasted whole and run once as the project operator: first `202611180001_attendance.sql`, then `202611190001_points_and_corrections.sql`. Each is a single transaction. Do not rerun a successful initial migration or remove its objects to fix an error; investigate the error first. Future changes should be new migrations.
 
 The migration creates the profiles, events, attendance, private role/code/rate-limit/audit tables, RLS policies and narrowly scoped database functions. It enforces verified UCSD accounts, one attendance entry per event/member, server-side admin authorization and last-admin protection. The website uses verified UCSD email and password sign-in; no authenticator enrollment is required. Changing from email-code sign-in to password sign-in requires no attendance schema change. Do not rerun an already applied migration.
 
@@ -68,6 +68,23 @@ The website does not use Magic Link for returning sign-ins. Keep OTP expiry shor
 
 Use **Forgot password?** to request a reset code. The UI gives the same response for existing and unknown addresses. After successful recovery-code verification, `/account/password` requires a verified authenticated account before allowing a new password to be saved. A failed password update can be retried without redeeming the already consumed recovery code again. Existing accounts created during email-code testing can set their initial password through this same recovery flow.
 
+### Google sign-in (recommended before the first big meeting)
+
+Every password sign-up needs a verification email, and email is the slowest part of this system: Supabase starts custom SMTP at 30 messages an hour and Gmail caps a personal account at 500 a day. A meeting where 100 people register at once will stall on email alone. Google sign-in avoids the email entirely, because Google confirms the address itself.
+
+1. In the Google Cloud Console (signed in as the club Gmail), create a project, publish an External consent screen, and create a Web application OAuth client. Its authorised redirect URI is the callback shown in Supabase under Authentication → Sign In / Providers → Google.
+2. Paste the client ID and secret into that Supabase Google provider page and enable it.
+3. Set `NEXT_PUBLIC_GOOGLE_SIGN_IN=1` in Vercel and redeploy. The sign-in page then shows **Continue with UCSD Google** above the password form.
+
+The database trigger still refuses any account that is not `@ucsd.edu`, whichever way it signs in, so a personal Gmail account gets "That account could not be used". This path has been tested against the trigger but not against Google itself. Test it with a real UCSD account, since the university can restrict third-party sign-in.
+
+### Settings to change on the hosted project before the first meeting
+
+- Email OTP length **8** and expiry **900** seconds (Authentication → Sign In / Providers → Email). The local config already uses these.
+- Turn on CAPTCHA protection (Authentication → Attack Protection) with Cloudflare Turnstile. Without it, anyone can request sign-up emails for arbitrary UCSD addresses and use up the hourly email allowance.
+- Raise the Auth rate limits for sign-ups, sign-ins and verifications. The defaults are per IP address, and a lecture hall on campus Wi-Fi can share a handful of addresses.
+- Ask members to create their account before the meeting, and enable Google sign-in (above) so nobody waits on an email.
+
 ### Email delivery is a launch dependency
 
 Configure a club-owned SMTP sender in Authentication → Email / SMTP Settings. Supabase's built-in sender is for testing only, normally delivers only to project-team addresses, and currently allows two messages per hour. It cannot support normal club sign-ups.
@@ -93,6 +110,8 @@ References: [Supabase custom SMTP](https://supabase.com/docs/guides/auth/auth-sm
 
 ## 4. Initial admin
 
+Before promoting anyone, including the first admin, have them use **Forgot password** once and set a new password. Anyone can start a registration for an address they do not own. Verifying the email replaces whatever password was set first, and a reset removes any doubt for an account that is about to hold admin access.
+
 After the website is configured and email delivery works, the designated tech lead must create an account and enter the code sent to their UCSD inbox. Then the project operator runs this in Supabase's SQL Editor, replacing the example address with that person's verified address:
 
 ```sql
@@ -107,23 +126,33 @@ If all admins lose access, an authorized project owner must review the recovery 
 
 ## 5. Running a meeting
 
-1. Create an event with its name, date/time and optional location. This private attendance event does not automatically add an item to the public Google Sheet calendar.
-2. Choose a closing time, then select **Generate code and QR**. Check-in opens immediately. Share the QR or the displayed ten-character code at the event.
+1. Create an event with its name, date/time, optional location and its point value. This private attendance event does not automatically add an item to the public Google Sheet calendar.
+2. Choose a closing time, then select **Generate code and QR**. Leave the opening time blank to open check-in now, or set one to prepare the QR for your slides beforehand. Use **Present** for a full-screen QR, or **Download QR** for a slide.
 3. Members sign in with their verified UCSD email and EIEC password, then explicitly select **Check in**. Merely opening or previewing a QR link never records attendance.
 4. Duplicate submissions count once. Close check-in early when needed. Generating a replacement code invalidates the old one.
 5. Review attendees on the event page or individual member totals/history under Members.
+6. Fix mistakes on the event page. **Add someone by hand** covers a member who forgot, or a bonus if you give it a custom point value. **Remove** deletes a wrong record and **Download CSV** gives you a copy. **Archive event** closes check-in, keeps the records and takes the event's points off the board.
+7. Running long? **Change the closing time** on the event page keeps the same code and QR. Generating a replacement code asks for confirmation because it invalidates the one on your slide.
+8. If someone puts an inappropriate name on the points board, **Hide from points board** on the Members page removes them, and they cannot undo it.
+9. The points board at `/points` counts events on or after the season date set on the admin page. Move that date forward each school year. Nothing is deleted.
 
-Codes are stored as SHA-256 hashes; the raw code/QR is shown only when generated. If the page is reloaded or the code is lost, generate a replacement. QR codes are generated locally without sending event secrets to a third-party image service. Anyone with a valid code and an eligible account can check in during its open window; this system does not prove physical presence or prevent members sharing a code.
+The current code stays on the event page until check-in closes, so a reload is safe. It is stored in a private table that only the admin functions can read. Generating a replacement invalidates the old code, including any slide that shows it. QR codes are generated locally without sending event secrets to a third-party image service. Anyone with a valid code and an eligible account can check in during its open window; this system does not prove physical presence or prevent members sharing a code.
 
 ## 6. Privacy and maintenance
 
-The privacy notice is at `/privacy`. Members see their own attendance; authorized admins can see member profiles and attendance. There is no public leaderboard. Ask the board to review the notice, account eligibility and retention expectations before launch.
+The privacy notice is at `/privacy`. Members see their own attendance; authorized admins can see member profiles and attendance. The points board at `/points` is visible only to signed-in members and shows first name, last initial, points and event count, and each member can hide themselves from it on their account page. Ask the board to review the notice, account eligibility and retention expectations before launch.
 
 For a verified correction, export or deletion request, use authorized project tools and confirm the requester's identity first. Deleting an Auth user removes their profile, attendance, rate counters and role through foreign keys. Audit references to that user are cleared rather than retaining their identifier. A deleted admin requires another admin or an owner recovery action. Do not delete an event to handle a member request.
 
 Keep exports and backups private and apply the same retention decisions to them. The Free plan has storage/sending limits and can pause after inactivity; check project health and email delivery before an event. Review project owners and website admins when board membership changes. Review dependency updates and Auth/security logs without logging OTPs, tokens or raw event codes.
 
-## 7. Verification
+## 7. Running it on your own machine
+
+With Docker Desktop running, `npm run db:start` starts a local Supabase (database, auth, and a mailbox that catches every email at http://127.0.0.1:54324), applies both migrations and loads sample data from `supabase/seed.sql`. Copy the three `NEXT_PUBLIC_*` values it prints into `.env.local` (URL `http://127.0.0.1:54321`, the anon key, site URL `http://127.0.0.1:3000`) and run `npm run dev -- --hostname 127.0.0.1`.
+
+Every sample account uses the password `eiec-local-dev`. `dev-admin@ucsd.edu` is the admin, `ada@ucsd.edu`, `grace@ucsd.edu` and others are members, and the open event's code is `ABCDE-23456`. `npm run db:reset` restores the sample data and `npm run db:stop` shuts it down. The seed file is for local use only and must never be run against the hosted project.
+
+## 8. Verification
 
 Run `npm test`, `npm run typecheck`, and `npm run build`. Real PostgreSQL authorization tests are available with `npm run test:db`; they do not replace hosted Supabase Auth checks.
 

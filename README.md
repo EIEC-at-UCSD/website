@@ -30,7 +30,7 @@ The existing public content needs no environment variables. Attendance requires 
 
 ## Member accounts and attendance
 
-Members create a password and verify their UCSD email, then sign in with email and password, check in by event code or QR, and see their private attendance count and history. Email codes support registration and password recovery. Board admins create attendance events, issue/close codes, review attendance and manage admin access. There is no public leaderboard. The account and attendance database is separate from the public Google Sheet.
+Members create a password and verify their UCSD email (or use UCSD Google sign-in once it is enabled), check in by event code or QR, and see their points, rank and history. The points board at `/points` is for signed-in members and shows first name, last initial and totals. Board admins create events with point values, schedule and close check-in, add or remove records by hand, export CSV, and manage admin access. The account and attendance database is separate from the public Google Sheet.
 
 See [setup and operation](docs/attendance-setup.md) for the database migration, email sender, initial admin, privacy and launch checks. [Design decisions](docs/attendance-design.md) record the agreed scope. Hosted authentication and email delivery must be configured and tested before enabling member sign-ups.
 

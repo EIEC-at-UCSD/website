@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 export function AttendanceShell({ eyebrow, title, description, children, actions }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   description: string;
   children: ReactNode;
@@ -10,7 +10,7 @@ export function AttendanceShell({ eyebrow, title, description, children, actions
 }) {
   return <div className="attendance-page">
     <header className="attendance-header">
-      <div><p className="attendance-eyebrow">{eyebrow}</p><h1>{title}</h1><p className="attendance-description">{description}</p></div>
+      <div>{eyebrow && <p className="attendance-eyebrow">{eyebrow}</p>}<h1>{title}</h1><p className="attendance-description">{description}</p></div>
       {actions && <div className="attendance-header-actions">{actions}</div>}
     </header>
     {children}

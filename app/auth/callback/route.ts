@@ -11,5 +11,7 @@ export async function GET(request: NextRequest) {
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) return NextResponse.redirect(new URL(next, siteOrigin()));
   }
-  return NextResponse.redirect(new URL("/sign-in?error=link", siteOrigin()));
+  // a provider sign-in that the database refused (not @ucsd.edu) comes back with an error instead of a code
+  const reason = request.nextUrl.searchParams.has("error") ? "account" : "link";
+  return NextResponse.redirect(new URL(`/sign-in?error=${reason}`, siteOrigin()));
 }

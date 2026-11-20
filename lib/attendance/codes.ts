@@ -1,7 +1,7 @@
 import { createHash, randomBytes } from "node:crypto";
 import { EVENT_CODE_ALPHABET, normalizeEventCode } from "./validation";
 
-/** Call only from the server. Keep raw codes out of persistent storage and logs. */
+/** call only from the server. keep raw codes out of logs and url query strings */
 export function generateEventCode(): string {
   const code = [...randomBytes(10)].map((byte) => EVENT_CODE_ALPHABET[byte & 31]).join("");
   return `${code.slice(0, 5)}-${code.slice(5)}`;

@@ -8,5 +8,5 @@ export const dynamic = "force-dynamic";
 
 export default async function PasswordPage() {
   await requireMember("/account/password");
-  return <AttendanceShell eyebrow="Account security" title="Choose your new password." description="Save a new password for your verified EIEC account."><PasswordForm /></AttendanceShell>;
+  return <AttendanceShell eyebrow="Account security" title="Choose your new password." description="Your email is verified. Save a password that only you know for your EIEC account."><PasswordForm /></AttendanceShell>;
 }

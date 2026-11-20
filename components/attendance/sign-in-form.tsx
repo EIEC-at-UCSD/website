@@ -8,7 +8,7 @@ import { normalizeMemberEmail, safeReturnPath, validateDisplayName, validateNewP
 
 type Mode = "sign-in" | "create" | "reset";
 
-export function SignInForm({ next }: { next: string }) {
+export function SignInForm({ next, google = false }: { next: string; google?: boolean }) {
   const router = useRouter();
   const [mode, setMode] = useState<Mode>("sign-in");
   const [email, setEmail] = useState("");
@@ -25,6 +25,17 @@ export function SignInForm({ next }: { next: string }) {
     setMode(value); setSent(false); setCode(""); setPassword(""); setConfirmation(""); setMessage(""); setCanResend(false);
   }
 
+  // google confirms the address itself, so no verification email. the database
+  // still refuses any account outside @ucsd.edu
+  async function continueWithGoogle() {
+    setPending(true); setMessage("");
+    const { error } = await browserSupabase().auth.signInWithOAuth({ provider: "google", options: {
+      redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(safeReturnPath(next))}`,
+      queryParams: { hd: "ucsd.edu", prompt: "select_account" },
+    } });
+    if (error) { setMessage("Google sign-in could not be started. Try again, or use your EIEC password."); setPending(false); }
+  }
+
   async function resendConfirmation() {
     setPending(true); setMessage("");
     try {
@@ -33,7 +44,7 @@ export function SignInForm({ next }: { next: string }) {
         emailRedirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(safeReturnPath(next))}`,
       } });
       if (error) throw new Error("We couldn’t request another verification email. Wait a moment and try again.");
-      setMode("create"); setSent(true); setCode(""); setPassword(""); setConfirmation(""); setCanResend(false);
+      setMode("create"); setSent(true); setCode(""); setConfirmation(""); setCanResend(false);
     } catch (error) { setMessage(error instanceof Error ? error.message : "Verification is temporarily unavailable."); }
     finally { setPending(false); }
   }
@@ -51,7 +62,17 @@ export function SignInForm({ next }: { next: string }) {
           await supabase.auth.signOut({ scope: "local" });
           throw new Error("The email could not be verified. Return to sign in and try again.");
         }
-        setCode(""); router.replace(mode === "reset" ? "/account/password" : safeReturnPath(next)); router.refresh();
+        let destination = mode === "reset" ? "/account/password" : safeReturnPath(next);
+        if (mode !== "reset") {
+          // someone else may have registered this address first with their own
+          // password. proving you own the inbox has to replace whatever they set
+          if (password) {
+            const { error: passwordError } = await supabase.auth.updateUser({ password, data: { display_name: name.trim() || undefined } });
+            if (passwordError) destination = "/account/password";
+            else if (name.trim()) await supabase.rpc("update_member_name", { p_name: name.trim().replace(/\s+/g, " ") });
+          } else destination = "/account/password";
+        }
+        setCode(""); setPassword(""); setConfirmation(""); router.replace(destination); router.refresh();
       } else if (mode === "create") {
         const displayName = validateDisplayName(name);
         const newPassword = validateNewPassword(password, confirmation);
@@ -64,7 +85,7 @@ export function SignInForm({ next }: { next: string }) {
           await supabase.auth.signOut({ scope: "local" });
           throw new Error("Registration is temporarily unavailable. Please contact EIEC.");
         }
-        setPassword(""); setConfirmation(""); setSent(true);
+        setConfirmation(""); setSent(true);
       } else if (mode === "reset") {
         const { error } = await supabase.auth.resetPasswordForEmail(canonicalEmail, { redirectTo: `${window.location.origin}/auth/callback?next=/account/password` });
         if (error) throw new Error("We couldn’t request a password reset. Wait a moment and try again.");
@@ -94,6 +115,10 @@ export function SignInForm({ next }: { next: string }) {
   const reset = mode === "reset";
   return <section className="attendance-panel attendance-check-in">
     {!sent && <div className="attendance-button-row" role="group" aria-label="Account action"><button type="button" disabled={pending} className={`attendance-button${mode !== "sign-in" ? " attendance-button-secondary" : ""}`} aria-pressed={mode === "sign-in"} onClick={() => chooseMode("sign-in")}>Sign in</button><button type="button" disabled={pending} className={`attendance-button${!join ? " attendance-button-secondary" : ""}`} aria-pressed={join} onClick={() => chooseMode("create")}>Create account</button></div>}
+    {google && !sent && <>
+      <button type="button" className="attendance-button attendance-google" disabled={pending} onClick={continueWithGoogle}>Continue with UCSD Google</button>
+      <p className="attendance-divider">or use an EIEC password</p>
+    </>}
     <h2 className="attendance-section">{sent ? "Check your UCSD email" : join ? "Join the EIEC community" : reset ? "Reset your password" : "Welcome back"}</h2>
     <p>{sent ? reset ? "If an account exists for this address, you’ll receive a password reset code. Enter it below to choose a new password." : "If registration can continue for this address, you’ll receive an email verification code. Verify once, then use your password for future sign-ins." : join ? "Create an EIEC password and verify your UCSD email to finish registering." : reset ? "Enter your UCSD email to request a password reset code." : "Sign in with your UCSD email and EIEC password."}</p>
     <form onSubmit={submit}>
