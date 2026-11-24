@@ -37,7 +37,7 @@ export default async function EventAdminPage({ params, searchParams }: { params:
     : null;
   const total = Number(rows[0]?.total_rows || 0);
 
-  return <AttendanceShell eyebrow="Event management" title={event.title}
+  return <AttendanceShell title={event.title}
     description={`${eventDate(event.starts_at)} Pacific time${event.location ? ` · ${event.location}` : ""} · ${plural(event.points, "point")}`}
     actions={<><Link href="/admin" className="attendance-button attendance-button-secondary">All events</Link><ArchiveEventForm eventId={id} archived={Boolean(event.archived_at)} action={archiveEventAction} /></>}>
     <EventCodeControls eventId={id} title={event.title} current={current} archived={Boolean(event.archived_at)} openAction={openCodeAction} closeAction={closeCodeAction} extendAction={extendCodeAction} />
@@ -46,7 +46,7 @@ export default async function EventAdminPage({ params, searchParams }: { params:
         <h2>Event attendees{total ? ` (${total})` : ""}</h2>
         <a href={`/admin/events/${id}/export`} className="attendance-button attendance-button-secondary">Download CSV</a>
       </div>
-      {error ? <AttendanceNotice tone="error">Attendees could not be loaded. Please refresh.</AttendanceNotice>
+      {error ? <AttendanceNotice tone="error">We couldn’t load the attendee list just now, so please refresh the page.</AttendanceNotice>
         : rows.length ? <div className="attendance-table-wrap"><table className="attendance-table">
           <thead><tr><th scope="col">Member</th><th scope="col">Checked in</th><th scope="col">Points</th><th scope="col">Remove</th></tr></thead>
           <tbody>{rows.map((row) => <tr key={row.member_id}>
@@ -56,7 +56,7 @@ export default async function EventAdminPage({ params, searchParams }: { params:
             <td><RemoveAttendanceForm eventId={id} memberId={row.member_id} name={row.display_name || row.email} action={removeAttendanceAction} /></td>
           </tr>)}</tbody>
         </table></div>
-        : <EmptyAttendance title="No check-ins yet.">Display the QR code or share the event code at your meeting.</EmptyAttendance>}
+        : <EmptyAttendance title="No check-ins yet.">Put the QR up on a slide or read out the code at your meeting, and names will start appearing here.</EmptyAttendance>}
       <Pagination path={`/admin/events/${id}`} offset={offset} total={total} />
     </section>
     <div className="attendance-grid attendance-section">

@@ -5,7 +5,7 @@ import { contactEmail } from "@/lib/settings";
 export const metadata: Metadata = { title: "Account and attendance privacy | EIEC" };
 
 export default function PrivacyPage() {
-  return <AttendanceShell eyebrow="Your information" title="Account and attendance privacy." description="How EIEC uses information from the member account and event check-in system."><article className="attendance-copy">
+  return <AttendanceShell title="Account and attendance privacy." description="How EIEC uses information from the member account and event check-in system."><article className="attendance-copy">
     <h2>What the account system stores</h2><p>Your name, verified UCSD email, account creation date, member or admin role, and the EIEC events you check in to, including the check-in time. The system also records administrative changes and uses short-lived counters to limit repeated check-in attempts.</p>
     <h2>Who can see it</h2><p>You can see your own account and attendance history. Authorized EIEC board admins can see member names, email addresses and attendance to manage the club’s events. The points board is visible only to signed-in EIEC members. It shows your first name, last initial, point total and number of events. It never shows your email or which events you attended, and you can hide yourself from it on your account page. There is no public member directory.</p>
     <h2>Why EIEC uses it</h2><p>To give you a member account, record one check-in per event, show your points and attendance, run the points board, and help board members manage attendance and account access.</p>

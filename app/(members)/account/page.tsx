@@ -24,8 +24,8 @@ export default async function AccountPage({ searchParams }: { searchParams: Prom
   const summary = summaryError ? null : summaryData as PointsSummary;
   const rows = (data || []) as unknown as HistoryRow[];
 
-  return <AttendanceShell eyebrow="My EIEC" title={profile.display_name ? `Welcome, ${profile.display_name}.` : "Welcome to EIEC."}
-    description="Your attendance history is private to you and EIEC board admins. Other signed-in members see only your first name, last initial and totals on the points board."
+  return <AttendanceShell title={profile.display_name ? `Welcome, ${profile.display_name}.` : "Welcome to EIEC."}
+    description="Here’s everything you’ve been to this year. Your history stays between you and the EIEC board, and other members only ever see your first name, last initial and totals on the points board."
     actions={<><Link href="/check-in" className="attendance-button">Check in to an event</Link><SignOutForm action={signOutAction} /></>}>
     {access.role === "admin" && (access.admin_mfa_required === null
       ? <AttendanceNotice>Your admin role is ready. The club’s admin sign-in policy still needs to be configured before the portal can open.</AttendanceNotice>

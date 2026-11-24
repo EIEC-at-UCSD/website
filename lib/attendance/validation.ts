@@ -5,16 +5,16 @@ export const PASSWORD_MAX_LENGTH = 72;
 
 export function normalizeMemberEmail(value: string): string {
   const email = value.trim().toLowerCase();
-  if (email.length > 254 || !/^[^@\s+]+@ucsd\.edu$/.test(email)) throw new AttendanceInputError("Use your own @ucsd.edu email address, without a + alias.");
+  if (email.length > 254 || !/^[^@\s+]+@ucsd\.edu$/.test(email)) throw new AttendanceInputError("Please use your own @ucsd.edu email address, without a + alias.");
   return email;
 }
 
 export function validateNewPassword(value: string, confirmation: string): string {
-  if ([...value].length < PASSWORD_MIN_LENGTH) throw new AttendanceInputError(`Use at least ${PASSWORD_MIN_LENGTH} characters for your password.`);
+  if ([...value].length < PASSWORD_MIN_LENGTH) throw new AttendanceInputError(`Your password needs at least ${PASSWORD_MIN_LENGTH} characters, so try a longer one.`);
   // Supabase uses bcrypt. Reject oversized UTF-8 inputs rather than allowing
   // different passwords to share a truncated prefix.
-  if (new TextEncoder().encode(value).length > PASSWORD_MAX_LENGTH || value.includes("\u0000")) throw new AttendanceInputError("That password is too long or contains an unsupported character. Use a shorter passphrase.");
-  if (value !== confirmation) throw new AttendanceInputError("The passwords do not match.");
+  if (new TextEncoder().encode(value).length > PASSWORD_MAX_LENGTH || value.includes("\u0000")) throw new AttendanceInputError("That password is too long or has a character we can’t accept, so please try a shorter one.");
+  if (value !== confirmation) throw new AttendanceInputError("Those two passwords don’t match, so please type them again.");
   return value;
 }
 
@@ -36,7 +36,7 @@ export function validateDisplayName(value: unknown): string {
   if (typeof value !== "string") throw new AttendanceInputError("Enter your name.");
   const name = value.trim().replace(/\s+/g, " ");
   if (name.length < 2 || name.length > 80 || !/^\p{L}[\p{L}\p{M} .'-]*$/u.test(name)) {
-    throw new AttendanceInputError("Use your name: letters, spaces, apostrophes and hyphens, 2 to 80 characters.");
+    throw new AttendanceInputError("Please enter your name using letters, spaces, apostrophes and hyphens, between 2 and 80 characters.");
   }
   return name;
 }

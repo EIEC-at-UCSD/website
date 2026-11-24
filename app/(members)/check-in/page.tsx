@@ -9,5 +9,5 @@ export const dynamic = "force-dynamic";
 
 export default async function CheckInPage() {
   const member = await getMember();
-  return <AttendanceShell eyebrow="Event attendance" title="Good to see you here." description="Check in at your EIEC event to add it to your attendance history."><CheckInForm action={checkInAction} signedIn={Boolean(member)} /></AttendanceShell>;
+  return <AttendanceShell title="Good to see you here." description="Glad you made it! Enter the code from the slides, or scan the QR, and we’ll add this event to your history."><CheckInForm action={checkInAction} signedIn={Boolean(member)} /></AttendanceShell>;
 }

@@ -92,7 +92,7 @@ export function CreateEventForm({ action }: { action: Action }) {
   const [state, formAction, pending] = useActionState(action, initialFormState);
   return <section className="attendance-panel">
     <h2>Create an attendance event</h2>
-    <p>Start with the event details. You’ll set up check-in and its QR code on the next screen.</p>
+    <p>Start with the basics for your event, and on the next screen you’ll be able to open check-in and get its QR code.</p>
     <form action={formAction}>
       <EventFields />
       <FormMessage state={state} />
@@ -105,7 +105,7 @@ export function EditEventForm({ event, action }: { event: { id: string; title: s
   const [state, formAction, pending] = useActionState(action, initialFormState);
   return <section className="attendance-panel">
     <h2>Edit event</h2>
-    <p>Changing the points affects future check-ins only. Existing records keep what they were given.</p>
+    <p>You can update the details any time. If you change the points, only future check-ins get the new value, and anyone already checked in keeps what they earned.</p>
     <form action={formAction}>
       <input type="hidden" name="eventId" value={event.id} />
       <EventFields title={event.title} location={event.location} points={event.points} startsAt={event.starts_at} />
@@ -134,7 +134,7 @@ export function EventCodeControls({ eventId, title, current, archived, openActio
   const [state, openFormAction, pending] = useActionState(openAction, initialFormState);
   const [closed, closeFormAction, closing] = useActionState(closeAction, initialFormState);
   if (archived) {
-    return <div className="attendance-notice">This event is archived. Restore it to open check-in again.</div>;
+    return <div className="attendance-notice">This event is archived, so check-in is closed. If you need it again, restore it using the button at the top.</div>;
   }
   return <div className="attendance-section">
     {current && <QrCodeCard {...current} eventTitle={title} />}
@@ -142,8 +142,8 @@ export function EventCodeControls({ eventId, title, current, archived, openActio
       <section className="attendance-panel">
         <h2>{current ? "Replace the event code" : "Set up check-in"}</h2>
         <p>
-          Leave the opening time blank to open check-in right away, or set one to prepare the QR for your slides ahead of the meeting.
-          {current ? " A new code replaces the current one, so update any slide that shows it." : ""}
+          You can leave the opening time blank to open check-in right away, or set one if you’d like to get the QR onto your slides before the meeting.
+          {current ? " Keep in mind that a new code replaces the current one, so you’d need to update any slide that shows it." : ""}
         </p>
         <form action={openFormAction}>
           <input type="hidden" name="eventId" value={eventId} />
@@ -162,7 +162,7 @@ export function EventCodeControls({ eventId, title, current, archived, openActio
       <section className="attendance-panel">
         {current && <>
           <h2>Change the closing time</h2>
-          <p>Running long? Move the closing time. The code and QR stay the same.</p>
+          <p>If the meeting is running long, just move the closing time, and the code and QR on your slide will keep working.</p>
           <form action={extendFormAction}>
             <input type="hidden" name="eventId" value={eventId} />
             <LocalDateInput name="newClosesAt" label="New closing time" initial={current.closesAt} />
@@ -171,7 +171,7 @@ export function EventCodeControls({ eventId, title, current, archived, openActio
           </form>
         </>}
         <h2 className={current ? "attendance-subhead" : undefined}>Close check-in</h2>
-        <p>Close it early when attendance collection ends. Existing attendance records stay on members’ accounts.</p>
+        <p>If the meeting wraps up early you can close check-in here, and everyone who already checked in keeps their attendance.</p>
         <form action={closeFormAction}>
           <input type="hidden" name="eventId" value={eventId} />
           <FormMessage state={closed} />
@@ -195,14 +195,14 @@ export function AddAttendanceForm({ eventId, eventPoints, action }: { eventId: s
   });
   return <section className="attendance-panel">
     <h2>Add someone by hand</h2>
-    <p>For a member who forgot to check in, or for bonus points. They need an EIEC account first.</p>
+    <p>If someone forgot to check in, or you’d like to give out bonus points, you can add them here as long as they already have an EIEC account.</p>
     <form action={formAction}>
       <input type="hidden" name="eventId" value={eventId} />
       <label htmlFor="add-email">Member’s UCSD email</label>
       <input id="add-email" type="email" placeholder="member@ucsd.edu" maxLength={254} autoCapitalize="none" required {...bind("email")} />
       <label htmlFor="add-points">Points (optional)</label>
       <input id="add-points" type="number" inputMode="numeric" min={0} max={1000} step={1} placeholder={String(eventPoints)} {...bind("points")} />
-      <p className="attendance-hint">Blank gives this event’s {eventPoints}. Enter another number for a bonus.</p>
+      <p className="attendance-hint">Leave this blank to give the event’s usual {eventPoints}, or enter a different number if it’s a bonus.</p>
       <label htmlFor="add-note">Note (optional)</label>
       <input id="add-note" maxLength={200} placeholder="Forgot phone" {...bind("note")} />
       <FormMessage state={state} />
@@ -238,7 +238,7 @@ export function SeasonForm({ seasonStart, action }: { seasonStart: string | null
   const [state, formAction, pending] = useActionState(action, initialFormState);
   return <section className="attendance-panel">
     <h2>Points board season</h2>
-    <p>The points board counts events on or after this date. Move it forward to start a new school year. Nothing is deleted.</p>
+    <p>The points board only counts events on or after this date, so when a new school year starts you can move it forward to give everyone a fresh start without deleting any history.</p>
     <form action={formAction}>
       <LocalDateInput name="seasonStart" label="Count events from" initial={seasonStart} required={false} hint="Blank counts every event." />
       <FormMessage state={state} />

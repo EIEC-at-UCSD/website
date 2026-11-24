@@ -51,14 +51,14 @@ export function QrCodeCard({ code, url, eventTitle, opensAt, closesAt }: {
     <h2>{eventTitle}</h2>
     {image
       ? <img src={image} width={320} height={320} alt={`QR code to check in to ${eventTitle}`} />
-      : <p role="status">{failed ? "The QR could not be generated. Members can enter the code below." : "Generating QR code…"}</p>}
-    <p className="attendance-hint">Or enter this code at the Check in page</p>
+      : <p role="status">{failed ? "We couldn’t draw the QR code, but members can still check in by entering the code below." : "Generating QR code…"}</p>}
+    <p className="attendance-hint">Members can also type this code in on the Check in page</p>
     <p className="attendance-display-code">{shown}</p>
     <div className="attendance-button-row">
       <button className="attendance-button" type="button" onClick={() => setPresenting(!presenting)}>{presenting ? "Exit (Esc)" : "Present"}</button>
       {!presenting && <button className="attendance-button attendance-button-secondary" type="button" onClick={copyCode}>{copied ? "Copied" : "Copy code"}</button>}
       {!presenting && image && <a href={image} download="eiec-event-check-in.png" className="attendance-button attendance-button-secondary">Download QR</a>}
     </div>
-    <p className="attendance-hint">Closes {when(closesAt)} Pacific time. This QR stays here until then, so a reload is safe.</p>
+    <p className="attendance-hint">Check-in closes {when(closesAt)} Pacific time, and this QR will stay right here until then, so it’s safe to reload the page.</p>
   </section>;
 }

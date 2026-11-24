@@ -14,7 +14,7 @@ export default async function SignInPage({ searchParams }: { searchParams: Promi
   const params = await searchParams;
   const next = safeReturnPath(params.next);
   if (await getMember()) redirect(next);
-  return <AttendanceShell title="Welcome to EIEC!" description="Sign in to check in at events and see your EIEC attendance.">
-    {attendanceConfigured() ? <>{params.error && <AttendanceNotice tone="error">{params.error === "account" ? "That account could not be used. Sign in with your @ucsd.edu account." : "That email link could not be verified. Sign in below, or use Forgot password to request a new reset code."}</AttendanceNotice>}<SignInForm next={next} google={process.env.NEXT_PUBLIC_GOOGLE_SIGN_IN === "1"} /></> : <AttendanceNotice>Member accounts are being set up. For now, contact <a href={`mailto:${contactEmail}`} className="attendance-text-link">{contactEmail}</a> for help with attendance.</AttendanceNotice>}
+  return <AttendanceShell title="Welcome to EIEC!" description="Sign in to check in at events, keep track of your points, and see how you stack up on the board.">
+    {attendanceConfigured() ? <>{params.error && <AttendanceNotice tone="error">{params.error === "account" ? "We couldn’t use that account, so please sign in with your @ucsd.edu address instead." : "That email link didn’t work, so go ahead and sign in below, or use Forgot password if you need a fresh reset code."}</AttendanceNotice>}<SignInForm next={next} google={process.env.NEXT_PUBLIC_GOOGLE_SIGN_IN === "1"} /></> : <AttendanceNotice>Member accounts are being set up. For now, contact <a href={`mailto:${contactEmail}`} className="attendance-text-link">{contactEmail}</a> for help with attendance.</AttendanceNotice>}
   </AttendanceShell>;
 }

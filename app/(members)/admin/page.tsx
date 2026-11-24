@@ -21,7 +21,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
     supabase.rpc("admin_season"),
   ]);
   const events = (data || []) as (AttendanceEvent & { event_attendance: { count: number }[] })[];
-  return <AttendanceShell eyebrow="Board portal" title="Bring the club together." description="Create events, manage check-in codes and review member attendance."
+  return <AttendanceShell title="Bring the club together." description="This is where you set up events, open check-in with a code and QR, and see who’s been showing up."
     actions={<><Link href="/admin/members" className="attendance-button">Members and access</Link><Link href="/points" className="attendance-button attendance-button-secondary">Points board</Link><Link href="/account" className="attendance-button attendance-button-secondary">My account</Link></>}>
     <div className="attendance-grid">
       <CreateEventForm action={createEventAction} />
@@ -29,7 +29,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
     </div>
     <section className="attendance-section">
       <h2>Attendance events</h2>
-      {error ? <AttendanceNotice tone="error">Events could not be loaded. Please try again.</AttendanceNotice>
+      {error ? <AttendanceNotice tone="error">We couldn’t load the events just now, so please refresh and try again.</AttendanceNotice>
         : events.length ? <div className="attendance-table-wrap"><table className="attendance-table">
           <thead><tr><th scope="col">Event</th><th scope="col">Date</th><th scope="col">Points</th><th scope="col">Check-in</th><th scope="col">Attendees</th></tr></thead>
           <tbody>{events.map((event) => <tr key={event.id}>
@@ -40,7 +40,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
             <td>{event.event_attendance[0]?.count || 0}</td>
           </tr>)}</tbody>
         </table></div>
-        : <EmptyAttendance title="Create your first event.">Each event gets its own attendance record, QR code and manual code.</EmptyAttendance>}
+        : <EmptyAttendance title="Create your first event.">Once you add one above, it gets its own QR and code for check-in, and its attendance will show up here.</EmptyAttendance>}
       <Pagination path="/admin" offset={offset} total={count || 0} />
     </section>
   </AttendanceShell>;

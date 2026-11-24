@@ -12,5 +12,5 @@ export default async function AccountSecurityPage({ searchParams }: { searchPara
   const { access } = await requireMember("/account/security");
   if (access.role !== "admin" || access.admin_mfa_required !== true) redirect("/account");
   const next = safeReturnPath((await searchParams).next || "/admin");
-  return <AttendanceShell eyebrow="Account security" title="An extra check for board access." description="Protect member information and administrative actions with an authenticator code."><AdminMfa next={next} /></AttendanceShell>;
+  return <AttendanceShell title="An extra check for board access." description="Protect member information and administrative actions with an authenticator code."><AdminMfa next={next} /></AttendanceShell>;
 }

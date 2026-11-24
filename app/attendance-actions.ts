@@ -115,7 +115,7 @@ export async function updateEventAction(_previous: FormState, form: FormData): P
     if (error) throw error;
     revalidatePath(`/admin/events/${eventId}`);
     revalidatePath("/admin");
-    return { status: "success", message: "Event saved. Existing check-ins keep the points they were given." };
+    return { status: "success", message: "Event saved, and anyone already checked in keeps the points they earned." };
   } catch (error) { return failure(error); }
 }
 
@@ -128,7 +128,7 @@ export async function archiveEventAction(_previous: FormState, form: FormData): 
     if (error) throw error;
     revalidatePath(`/admin/events/${eventId}`);
     revalidatePath("/admin");
-    return { status: "success", message: archive ? "Event archived. Check-in is closed and its records are kept." : "Event restored." };
+    return { status: "success", message: archive ? "This event is now archived, with check-in closed and all of its records kept." : "The event is restored, and you can open check-in for it again." };
   } catch (error) { return failure(error); }
 }
 
@@ -136,7 +136,7 @@ export async function openCodeAction(_previous: FormState, form: FormData): Prom
   const { supabase } = await requireAdmin();
   try {
     const eventId = validateUUID(form.get("eventId"));
-    if (form.get("replacing") === "true" && form.get("confirmed") !== "on") throw new AttendanceInputError("Tick the box to confirm. The current code and any slide showing it will stop working.");
+    if (form.get("replacing") === "true" && form.get("confirmed") !== "on") throw new AttendanceInputError("Please tick the box to confirm, since the current code and any slide showing it will stop working.");
     const closesAt = validateDate(form.get("closesAt"));
     const opensRaw = form.get("opensAt");
     const opensAt = typeof opensRaw === "string" && opensRaw ? validateDate(opensRaw) : null;
@@ -150,8 +150,8 @@ export async function openCodeAction(_previous: FormState, form: FormData): Prom
     return {
       status: "success",
       message: opensAt && new Date(opensAt).getTime() > Date.now()
-        ? `Code ready. Check-in opens ${eventDate(opensAt)} Pacific time. Any previous code was replaced.`
-        : "Check-in is open. Any previous code for this event was replaced.",
+        ? `Your code is ready, and check-in opens ${eventDate(opensAt)} Pacific time. Any earlier code for this event has been replaced.`
+        : "Check-in is open, and any earlier code for this event has been replaced.",
     };
   } catch (error) { return failure(error); }
 }
@@ -178,7 +178,7 @@ export async function setBoardHiddenAction(_previous: FormState, form: FormData)
     if (error) throw error;
     revalidatePath("/admin/members");
     refreshBoard();
-    return { status: "success", message: hidden ? "Hidden from the points board." : "Shown on the points board again." };
+    return { status: "success", message: hidden ? "They’re now hidden from the points board." : "They’re showing on the points board again." };
   } catch (error) { return failure(error); }
 }
 
@@ -190,7 +190,7 @@ export async function closeCodeAction(_previous: FormState, form: FormData): Pro
     if (error) throw error;
     revalidatePath(`/admin/events/${eventId}`);
     revalidatePath("/admin");
-    return { status: "success", message: "Check-in is closed. The code no longer works." };
+    return { status: "success", message: "Check-in is closed, and the code won’t work from here on." };
   } catch (error) { return failure(error); }
 }
 
@@ -205,7 +205,7 @@ export async function addAttendanceAction(_previous: FormState, form: FormData):
     if (error) throw error;
     revalidatePath(`/admin/events/${eventId}`);
     refreshBoard();
-    return { status: "success", message: `Added ${email}.` };
+    return { status: "success", message: `Added ${email}, and their points are on the board.` };
   } catch (error) { return failure(error); }
 }
 
@@ -214,12 +214,12 @@ export async function removeAttendanceAction(_previous: FormState, form: FormDat
   try {
     const eventId = validateUUID(form.get("eventId"));
     const memberId = validateUUID(form.get("memberId"));
-    if (form.get("confirmed") !== "on") throw new AttendanceInputError("Tick the box to confirm the removal.");
+    if (form.get("confirmed") !== "on") throw new AttendanceInputError("Please tick the box to confirm you want to remove this record.");
     const { error } = await supabase.rpc("admin_remove_attendance", { p_event_id: eventId, p_member_id: memberId });
     if (error) throw error;
     revalidatePath(`/admin/events/${eventId}`);
     refreshBoard();
-    return { status: "success", message: "Removed." };
+    return { status: "success", message: "That record has been removed." };
   } catch (error) { return failure(error); }
 }
 
@@ -232,7 +232,7 @@ export async function setSeasonAction(_previous: FormState, form: FormData): Pro
     if (error) throw error;
     revalidatePath("/admin");
     refreshBoard();
-    return { status: "success", message: start ? `The board now counts events from ${eventDate(start)} Pacific time.` : "The board now counts every event." };
+    return { status: "success", message: start ? `The board now counts events from ${eventDate(start)} Pacific time.` : "The board now counts every event, with no starting date." };
   } catch (error) { return failure(error); }
 }
 
@@ -241,11 +241,11 @@ export async function changeAdminAction(_previous: FormState, form: FormData): P
   try {
     const memberId = validateUUID(form.get("memberId"));
     const operation = form.get("operation");
-    if (!["promote", "remove"].includes(String(operation)) || form.get("confirmed") !== "on") throw new AttendanceInputError("Confirm the access change before continuing.");
+    if (!["promote", "remove"].includes(String(operation)) || form.get("confirmed") !== "on") throw new AttendanceInputError("Please tick the box to confirm the access change before continuing.");
     const { error } = await supabase.rpc("set_member_admin", { p_member_id: memberId, p_make_admin: operation === "promote" });
     if (error) throw error;
     revalidatePath("/admin/members");
     revalidatePath("/account");
-    return { status: "success", message: operation === "promote" ? "Admin access granted." : "Admin access removed." };
+    return { status: "success", message: operation === "promote" ? "They now have admin access." : "Their admin access has been removed." };
   } catch (error) { return failure(error); }
 }
